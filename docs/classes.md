@@ -7,8 +7,6 @@
   - Automatic Farmer
   - Child Farmer
   - Easter Eggs
-- Weeds
-  - Dandelion
 
 ## Farmers
 Our main protagonists, they have to defend their crops against the invasion of harmful weeds. In order to fend off the invasion,
@@ -16,33 +14,23 @@ they have a wide array of tools at their disposition.
 
 ### Simple Farmer
 
-HP : 100
+HPs : 70-120
 
-4 move types:
+AttackDices : 4-6 d6
 
-- Pull out
-	- Roll 1 d6
-- Crop out
-	- Roll 2 d6, 3 turn cooldown
-- Take a break
-	- Roll 3 d6, heal that amount, 5 turn cooldown
-- Surrender
-	- Instantly lose all health.
+### Chem Farmer
 
-## Weeds
-Our antagonists, they have invaded our crops and are trying to steal their ressources. You must defeat them to make sure your crops grow big and beautiful.
+HPs: 40-90
 
-### Dandelions
-The standard weed, most plentiful and most annoying to deal with, they aren't very strong, but by sheer numbers, they overwhelm your garden.
+AttackDices : 6-9 d6
 
-HP: 25
 
-3 move types: 
+### Automatic Farmer 
 
-- Pollen Spread 
-	- Rolls 1 d6
-- Release Seeds
-	- Rolls 3d 6, 5 turn cooldown
-- Petal Dance
-	- Roll 1 d6, heal that amount, 10 turn cooldown
+HPs: 100-150
+
+IsInTractor = Halves damage taken
+
+AttackDices: 1-3 d6
+
 
