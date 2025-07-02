@@ -1,0 +1,73 @@
+﻿using System.Net.Mail;
+
+namespace Farmer_vs_weeds
+{
+    internal class Farmer
+    {
+
+        // -- Properties Statements -- 
+        private string Username { get; set; }
+        private int HealthPoints{ get; set; }
+        private int AttackDices { get; set; }
+
+        // -- Constructor Statement --
+
+        public Farmer(string username, int healthpoints, int attackDices)
+        {
+            Username = username;
+            AttackDices = attackDices;
+            if (healthpoints < 0)
+            {
+                Console.WriteLine("You cannot create a farmer with negative health");
+            }
+            else
+            {
+                HealthPoints = healthpoints;
+            }
+        }
+
+        // -- Getter Setters --
+        public string GetUsername()
+        {
+            return this.Username;
+        }
+        public int GetHPs()
+        {
+            return this.HealthPoints;
+        }
+        public void SetHealthPoints(int healthPoints)
+        {
+            this.HealthPoints = healthPoints;
+        }
+        public int GetAttackDices()
+        {
+            return this.AttackDices;
+        }
+
+        // -- Methods --
+
+        public void ShowInfos()
+        {
+            Console.WriteLine($"{Username} has {HealthPoints}hp left.");
+        }
+
+        public int Attack()
+        {
+            Random dice = new Random();
+            int rollTotal = 0;
+            int attackDice = dice.Next(1, 6);
+            
+            for (int i = 0; i < AttackDices; i++)
+            {
+                rollTotal += attackDice;
+            }
+
+            return rollTotal;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            HealthPoints -= Attack();
+        }
+    }
+}
