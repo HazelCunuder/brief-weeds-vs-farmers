@@ -26,7 +26,6 @@ namespace Farmer_vs_weeds.Menu
 
             while (addFarmer)
             {
-
                 Console.WriteLine("--- Add a Farmer ---\n");
 
                 Console.WriteLine("Create new Farmer\n");
@@ -39,7 +38,6 @@ namespace Farmer_vs_weeds.Menu
                 Console.WriteLine("Choose your Farmer: 1-3");
 
                 choiceFarmer();
-
             }
             
             void choiceFarmer()
