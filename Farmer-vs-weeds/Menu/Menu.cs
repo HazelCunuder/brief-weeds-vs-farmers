@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Farmer_vs_weeds.Farmers;
 
 namespace Farmer_vs_weeds.Menu
 {
@@ -39,6 +41,12 @@ namespace Farmer_vs_weeds.Menu
 
                 switch (input)
                 {
+                    case '1':
+                    case '&':
+                        Console.Clear();
+                        isMenuOn = false;
+                        AddFarmerMenu.AddFarmer();
+                        break;
                     case '0':
                     case 'à':
                         Console.Clear();
