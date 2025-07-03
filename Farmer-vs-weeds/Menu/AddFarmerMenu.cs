@@ -93,8 +93,45 @@ namespace Farmer_vs_weeds.Menu
                     case '2':
                     case 'é':
 
-                        Console.Write("Name: ");
+                        type = "Chemical Farmer";
+
+                        Console.Write("\nName: ");
                         username = Console.ReadLine();
+
+                        while (!validHp)
+                        {
+                            Console.WriteLine("\nChoose between 40 and 90 life points ");
+                            int inputUser = Convert.ToInt32(Console.ReadLine());
+
+                            if (inputUser < 40 || inputUser > 90)
+                            {
+                                Console.WriteLine("Erreur,follow the instructions ");
+                            }
+                            else
+                            {
+                                hp = inputUser;
+                                break;
+                            }
+
+                        }
+                        while (!validAttackDices)
+                        {
+                            Console.WriteLine("\nChoose the number of attack dice between 6-9 d6");
+                            int inputUser = Convert.ToInt32(Console.ReadLine());
+
+                            if (inputUser < 6 || inputUser > 9)
+                            {
+                                Console.WriteLine("Erreur,follow the instructions ");
+                            }
+                            else
+                            {
+                                attackDices = inputUser;
+                                break;
+                            }
+                        }
+
+                        Menu.FarmersList().Add(new Farmer(username, hp, attackDices));
+                        Console.WriteLine($"\n{type} {username} create with {hp} HP and {attackDices} attack\n");
                         break;
 
                     case '3':
