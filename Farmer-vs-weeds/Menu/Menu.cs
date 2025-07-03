@@ -19,9 +19,6 @@ namespace Farmer_vs_weeds.Menu
         {
             return Farmers;
         }
-
-        
-
         public static void DisplayMenu()
         {
             bool isMenuOn = true;
@@ -41,8 +38,8 @@ namespace Farmer_vs_weeds.Menu
 
                 MenuControls();
             }
-
-
+            
+            
             void MenuControls()
             {
                 char input;
