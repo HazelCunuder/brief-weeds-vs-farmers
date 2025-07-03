@@ -10,6 +10,7 @@ namespace Farmer_vs_weeds.Menu
     internal class Menu
     {
         // -- Properties --
+        private List<Farmer> Farmers = new List<Farmer>();
 
         // -- Methods --
         public static void DisplayMenu()
@@ -24,14 +25,15 @@ namespace Farmer_vs_weeds.Menu
                 Console.WriteLine("2 - Remove a Farmer");
                 Console.WriteLine("3 - Show Farmer's list");
                 Console.WriteLine("4 - Start a tournament");
-                Console.WriteLine("5 - Show previous winners\n");
+                Console.WriteLine("5 - Start Singles Fight");
+                Console.WriteLine("6 - Show previous winners\n");
                 Console.WriteLine("0 - Quit");
                 Console.ResetColor();
 
                 MenuControls();
             }
-            
-            
+
+
             void MenuControls()
             {
                 char input;
