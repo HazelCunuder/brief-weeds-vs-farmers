@@ -29,45 +29,47 @@ namespace Farmer_vs_weeds
         // -- Getter Setters --
         public string GetUsername()
         {
-            return this.Username;
+            return Username;
         }
         public int GetHPs()
         {
-            return this.HealthPoints;
+            return HealthPoints;
         }
         public void SetHealthPoints(int healthPoints)
         {
-            this.HealthPoints = healthPoints;
+            HealthPoints = healthPoints;
         }
         public int GetAttackDices()
         {
-            return this.AttackDices;
+            return AttackDices;
         }
 
         // -- Methods --
 
         public void ShowInfos()
         {
-            Console.WriteLine($"{Username} has {HealthPoints}hp left.");
+            Console.WriteLine($"{Username} has {HealthPoints}hp left and {AttackDices} dices.");
         }
 
-        public int Attack()
+        public virtual int Attack()
         {
             Random dice = new Random();
             int rollTotal = 0;
             int attackDice = dice.Next(1, 6);
             
-            for (int i = 0; i < AttackDices; i++)
+            for (int i = 0; i < GetAttackDices(); i++)
             {
                 rollTotal += attackDice;
             }
 
+            Console.WriteLine(rollTotal);
             return rollTotal;
         }
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
-            HealthPoints -= Attack();
+            
+            HealthPoints -= damage;
         }
     }
 }
