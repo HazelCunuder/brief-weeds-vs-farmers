@@ -9,13 +9,6 @@ namespace Farmer_vs_weeds.Menu
     internal class Menu
     {
 
-        private List<Farmer> Farmer = new List<Farmer>();
 
-        // -- Methods --
-
-        public void AddFarmer()
-        {
-            Console
-        }
     }
 }
