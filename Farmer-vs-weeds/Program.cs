@@ -9,7 +9,7 @@ namespace Farmer_vs_weeds
             bool isFightOver = false;
             
             Farmer john = new Farmer("John Doe", 100, 4);
-            Farmer terry = new Farmer("Terry", 100, 4);
+            
 
             while (!isFightOver)
             {

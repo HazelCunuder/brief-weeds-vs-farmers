@@ -10,6 +10,8 @@ namespace Farmer_vs_weeds
         private int HealthPoints{ get; set; }
         private int AttackDices { get; set; }
 
+        
+
         // -- Constructor Statement --
 
         public Farmer(string username, int healthpoints, int attackDices)
@@ -51,7 +53,7 @@ namespace Farmer_vs_weeds
             Console.WriteLine($"{Username} has {HealthPoints}hp left.");
         }
 
-        public int Attack()
+        public virtual int Attack()
         {
             Random dice = new Random();
             int rollTotal = 0;
@@ -65,7 +67,7 @@ namespace Farmer_vs_weeds
             return rollTotal;
         }
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             HealthPoints -= Attack();
         }
