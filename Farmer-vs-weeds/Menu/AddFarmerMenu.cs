@@ -87,6 +87,7 @@ namespace Farmer_vs_weeds.Menu
                                 break;
                             }
                         }
+                       
                         Menu.FarmersList().Add(new Farmer(username, hp, attackDices));
                         Console.WriteLine($"\n{type} {username} create with {hp} HP and {attackDices} attack\n");
                         break;
