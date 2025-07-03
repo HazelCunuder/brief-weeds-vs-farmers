@@ -7,6 +7,7 @@
         private bool inTractor;
 
         // -- Constructor Statement --
+
         public TractorFarmer(string username, int healthPoints, int attackDices, bool isInTractor) : base(username, healthPoints, attackDices)
         {
             inTractor = isInTractor;
@@ -46,6 +47,7 @@
         }
 
         // -- Methods --
+
         public override void TakeDamage(int damage)
         {
             if (inTractor == true)
@@ -70,6 +72,8 @@
             }
 
             return rollTotal;
+            Console.WriteLine(rollTotal);
         }
+
     }
 }
