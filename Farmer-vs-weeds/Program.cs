@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Farmer_vs_weeds.Farmers;
+using System.Runtime.CompilerServices;
 
 namespace Farmer_vs_weeds
 {
@@ -7,9 +8,9 @@ namespace Farmer_vs_weeds
         static void Main(string[] args)
         {
             bool isFightOver = false;
-            
-            Farmer john = new Farmer("John Doe", 100, 4);
-            
+
+            Farmer john = new Farmer("John Doe", 120, 4);
+            Farmer terry = new ChemFarmer("Terry", 90, 9);
 
             while (!isFightOver)
             {
@@ -53,7 +54,7 @@ namespace Farmer_vs_weeds
                     isFightOver = true;
                 }
             }
-            
+
             Console.ReadKey();
         }
     }
