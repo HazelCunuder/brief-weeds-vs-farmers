@@ -9,7 +9,7 @@ namespace Farmer_vs_weeds
         {
             bool isFightOver = false;
 
-            Farmer john = new Farmer("John Doe", 120, 4);
+            TractorFarmer john = new TractorFarmer("john", 150, 1,true);
             Farmer terry = new ChemFarmer("Terry", 90, 9);
 
             while (!isFightOver)
