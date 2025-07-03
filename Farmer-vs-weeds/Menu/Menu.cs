@@ -12,7 +12,7 @@ namespace Farmer_vs_weeds.Menu
     internal class Menu
     {
         // -- Properties --
-        static List<Farmer> Farmers = new List<Farmer>();
+        private static List<Farmer> Farmers = new List<Farmer>();
 
         // -- Methods --
         public static List<Farmer> FarmersList()
