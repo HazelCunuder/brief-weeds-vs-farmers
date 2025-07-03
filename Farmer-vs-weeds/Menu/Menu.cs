@@ -13,11 +13,8 @@ namespace Farmer_vs_weeds.Menu
     {
         // -- Properties --
         private static List<Farmer> Farmers = new List<Farmer>();
+
         // -- Methods --
-        public static List<Farmer> FarmersList()
-        {
-            return Farmers;
-        }
         public static void DisplayMenu()
         {
             bool isMenuOn = true;
@@ -30,7 +27,8 @@ namespace Farmer_vs_weeds.Menu
                 Console.WriteLine("2 - Remove a Farmer");
                 Console.WriteLine("3 - Show Farmer's list");
                 Console.WriteLine("4 - Start a tournament");
-                Console.WriteLine("5 - Show previous winners\n");
+                Console.WriteLine("5 - Start Singles Fight");
+                Console.WriteLine("6 - Show previous winners\n");
                 Console.WriteLine("0 - Quit");
                 Console.ResetColor();
 
@@ -38,7 +36,7 @@ namespace Farmer_vs_weeds.Menu
             }
             
             
-             void MenuControls()
+            void MenuControls()
             {
                 char input;
                 input = Console.ReadKey().KeyChar;
@@ -51,10 +49,19 @@ namespace Farmer_vs_weeds.Menu
                         isMenuOn = false;
                         AddFarmerMenu.AddFarmer();
                         break;
+                    case '2':
+                    case 'é':
+                        Console.Clear();
+                        isMenuOn = false;
+                        RemoveFarmer.RemoveFarmerMenu();
+                        break;
                     case '0':
                     case 'à':
                         Console.Clear();
                         isMenuOn = false;
+                        break;
+                    default:
+                        Console.Clear();
                         break;
                 }
             }

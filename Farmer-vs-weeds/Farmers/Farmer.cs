@@ -25,6 +25,8 @@ namespace Farmer_vs_weeds
                 HealthPoints = healthpoints;
             }
         }
+        public Farmer() { }
+
 
         // -- Getter Setters --
         public string GetUsername()
