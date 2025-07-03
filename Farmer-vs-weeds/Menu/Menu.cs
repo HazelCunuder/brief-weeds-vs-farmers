@@ -12,9 +12,16 @@ namespace Farmer_vs_weeds.Menu
     internal class Menu
     {
         // -- Properties --
-        private List<Farmer> Farmers = new List<Farmer>();
+        private static List<Farmer> Farmers = new List<Farmer>();
 
         // -- Methods --
+        public static List<Farmer> FarmersList()
+        {
+            return Farmers;
+        }
+
+        
+
         public static void DisplayMenu()
         {
             bool isMenuOn = true;
@@ -49,10 +56,19 @@ namespace Farmer_vs_weeds.Menu
                         isMenuOn = false;
                         AddFarmerMenu.AddFarmer();
                         break;
+                    case '2':
+                    case 'é':
+                        Console.Clear();
+                        isMenuOn = false;
+                        RemoveFarmer.RemoveFarmerMenu();
+                        break;
                     case '0':
                     case 'à':
                         Console.Clear();
                         isMenuOn = false;
+                        break;
+                    default:
+                        Console.Clear();
                         break;
                 }
             }
