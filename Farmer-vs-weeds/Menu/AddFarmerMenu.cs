@@ -22,8 +22,6 @@ namespace Farmer_vs_weeds.Menu
             bool validHp = false;
             bool validAttackDices = false;
 
-            bool isMenuOn = true;
-
             while (addFarmer)
             {
                 Console.WriteLine("--- Add a Farmer ---\n");

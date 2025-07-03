@@ -59,6 +59,12 @@ namespace Farmer_vs_weeds.Menu
                         isMenuOn = false;
                         RemoveFarmer.RemoveFarmerMenu();
                         break;
+                    case '3':
+                    case '\"':
+                        Console.Clear();
+                        isMenuOn = false;
+                        DisplayList.DisplayListMenu();
+                        break;
                     case '0':
                     case 'à':
                         Console.Clear();
