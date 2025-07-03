@@ -1,4 +1,6 @@
-﻿namespace Farmer_vs_weeds
+﻿using Farmer_vs_weeds.Farmers;
+
+namespace Farmer_vs_weeds
 {
     internal class Program
     {
