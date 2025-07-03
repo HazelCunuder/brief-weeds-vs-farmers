@@ -26,14 +26,14 @@
                 }
                 else if (healthPoints < 100)
                 {
-                    Console.WriteLine("You cannot create a Automic Farmer with less than 40HP\n");
+                    Console.WriteLine("You cannot create a Automic Farmer with less than 100HP\n");
                     Console.Write("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
                 else if (healthPoints > 150)
                 {
-                    Console.WriteLine("You cannot create a Automatic Farmer with more than 90HP\n");
+                    Console.WriteLine("You cannot create a Automatic Farmer with more than 150HP\n");
                     Console.Write("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
