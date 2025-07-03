@@ -12,8 +12,12 @@ namespace Farmer_vs_weeds.Menu
     internal class Menu
     {
         // -- Properties --
-
+        private static List<Farmer> Farmers = new List<Farmer>();
         // -- Methods --
+        public static List<Farmer> FarmersList()
+        {
+            return Farmers;
+        }
         public static void DisplayMenu()
         {
             bool isMenuOn = true;
@@ -34,7 +38,7 @@ namespace Farmer_vs_weeds.Menu
             }
             
             
-            void MenuControls()
+             void MenuControls()
             {
                 char input;
                 input = Console.ReadKey().KeyChar;

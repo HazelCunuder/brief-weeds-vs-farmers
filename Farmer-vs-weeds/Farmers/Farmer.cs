@@ -9,10 +9,9 @@ namespace Farmer_vs_weeds
         private string Username { get; set; }
         private int HealthPoints{ get; set; }
         private int AttackDices { get; set; }
-   
+
 
         // -- Constructor Statement --
-
         public Farmer(string username, int healthpoints, int attackDices)
         {
             Username = username;
