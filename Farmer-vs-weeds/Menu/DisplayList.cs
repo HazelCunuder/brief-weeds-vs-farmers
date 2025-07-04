@@ -15,14 +15,18 @@ namespace Farmer_vs_weeds.Menu
 
             while (displayListMenuOn)
             {
-                Console.WriteLine("--- List of Farmers ---\n");
-
+                Console.WriteLine("╔═════════════════════════════=══╗");
+                Console.WriteLine("║          Farmer's List         ║");
+                Console.WriteLine("║════════════════════════════════║");
+                Console.WriteLine("║                                ║");
                 foreach (Farmer f in Menu.FarmersList())
                 {
-                    Console.WriteLine($"{placeInList} - {f.GetUsername()}");
+                    Console.WriteLine($"║ {placeInList} - {f.GetUsername()} ║");
                     placeInList++;
                 }
-                Console.WriteLine("\n0 - Go Back\n");
+                Console.WriteLine("║                               ║");
+                Console.WriteLine("║ 0 - Go Back                   ║");
+                Console.WriteLine("╚═══════════════════════════════╝");
 
                 ControlMenu();
             }

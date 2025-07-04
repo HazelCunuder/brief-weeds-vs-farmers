@@ -26,14 +26,20 @@ namespace Farmer_vs_weeds.Menu
             while (isMenuOn)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("--- Brawling Farmers ---\n");
-                Console.WriteLine("1 - Add Farmer");
-                Console.WriteLine("2 - Remove a Farmer");
-                Console.WriteLine("3 - Show Farmer's list");
-                Console.WriteLine("4 - Start a tournament");
-                Console.WriteLine("5 - Start Singles Fight");
-                Console.WriteLine("6 - Show previous winners\n");
-                Console.WriteLine("0 - Quit");
+                Console.WriteLine("╔═══════════════════════════════╗");
+                Console.WriteLine("║        Brawling Farmers       ║");
+                Console.WriteLine("║═══════════════════════════════║");
+                Console.WriteLine("║                               ║");
+                Console.WriteLine("║ 1 - Add Farmer                ║");
+                Console.WriteLine("║ 2 - Remove Farmer             ║");
+                Console.WriteLine("║ 3 - Show Farmer's List        ║");
+                Console.WriteLine("║ 4 - Start a tournament        ║");
+                Console.WriteLine("║ 5 - Start Singles Fight       ║");
+                Console.WriteLine("║ 6 - Show previous Winners     ║");
+                Console.WriteLine("║                               ║");
+                Console.WriteLine("║ 0 - Quit                      ║");
+                Console.WriteLine("╚═══════════════════════════════╝");
+
                 Console.ResetColor();
 
                 MenuControls();
