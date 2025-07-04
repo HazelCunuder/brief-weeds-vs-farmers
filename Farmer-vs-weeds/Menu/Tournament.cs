@@ -33,8 +33,8 @@ namespace Farmer_vs_weeds.Menu
 
             if (totalFarmers < 1)
             {
-                Console.Write("\nYou need at least 1 farmers create to start a tournament\n");
-                Console.WriteLine("\nPress any key to return menu");
+                Console.Write("\nYou need at least one created farmer to start a tournament\n");
+                Console.WriteLine("\nPress any key to return to the main menu");
                 Console.ReadKey();
                 Console.Clear();
                 Menu.DisplayMenu();
