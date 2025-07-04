@@ -8,7 +8,7 @@
 
         // -- Constructor Statement --
 
-        public TractorFarmer(string username, int healthPoints, int attackDices, bool isInTractor) : base(username, healthPoints, attackDices)
+        public TractorFarmer(string username, int healthPoints, int attackDices, bool isInTractor, string types) : base(username, healthPoints, attackDices, types)
         {
             inTractor = isInTractor;
 
