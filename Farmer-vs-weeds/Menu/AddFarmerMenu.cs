@@ -2,13 +2,14 @@
 {
     internal class AddFarmerMenu
     {
+        // -- Methods --
         public static void AddFarmer()
         {
             string username;
             int hp = 0;
             int attackDices = 0;
             bool inTractor = false;
-            string type = "";
+            string types = "";
 
             bool addFarmer = true;
             bool validHp = false;
@@ -40,7 +41,7 @@
                     case '1':
                     case '&':
 
-                        type = "Classic Farmer";
+                        types = "Classic Farmer";
                         Console.Clear();
                         Console.Write("\nName: ");
                         username = Console.ReadLine();
@@ -77,15 +78,15 @@
                             }
                         }
 
-                        Menu.FarmersList().Add(new Farmer(username, hp, attackDices));
+                        Menu.FarmersList().Add(new Farmer(username, hp, attackDices,types));
                         Console.Clear();
-                        Console.WriteLine($"\n{type} {username} create with {hp} HP and {attackDices} attack\n");
+                        Console.WriteLine($"\n{types} {username} create with {hp} HP and {attackDices} attack\n");
                         break;
 
                     case '2':
                     case 'é':
 
-                        type = "Chem Farmer";
+                        types = "Chem Farmer";
                         Console.Clear();
                         Console.Write("\nName: ");
                         username = Console.ReadLine();
@@ -122,15 +123,15 @@
                             }
                         }
 
-                        Menu.FarmersList().Add(new Farmer(username, hp, attackDices));
+                        Menu.FarmersList().Add(new Farmer(username, hp, attackDices,types));
                         Console.Clear();
-                        Console.WriteLine($"\n{type} {username} create with {hp} HP and {attackDices} attack\n");
+                        Console.WriteLine($"\n{types} {username} create with {hp} HP and {attackDices} attack\n");
                         break;
 
                     case '3':
                     case '"':
                         inTractor = true;
-                        type = "Tractor Farmer";
+                        types = "Tractor Farmer";
                         Console.Clear();
                         Console.Write("\nName: ");
                         username = Console.ReadLine();
@@ -167,9 +168,9 @@
                             }
                         }
 
-                        Menu.FarmersList().Add(new Farmer(username, hp, attackDices));
+                        Menu.FarmersList().Add(new Farmer(username, hp, attackDices,types));
                         Console.Clear();
-                        Console.WriteLine($"\n{type} {username} create with {hp} HP and {attackDices} attack\n");
+                        Console.WriteLine($"\n{types} {username} create with {hp} HP and {attackDices} attack\n");
                         break; ;
 
                     case '0':
