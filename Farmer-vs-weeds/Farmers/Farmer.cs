@@ -9,10 +9,12 @@ namespace Farmer_vs_weeds
         private string Username { get; set; }
         private int HealthPoints{ get; set; }
         private int AttackDices { get; set; }
+        private string Types { get; set; }
 
         // -- Constructor Statement --
-        public Farmer(string username, int healthpoints, int attackDices)
+        public Farmer(string username, int healthpoints, int attackDices, string types)
         {
+            Types = types;
             Username = username;
             AttackDices = attackDices;
             if (healthpoints < 0)
@@ -24,8 +26,6 @@ namespace Farmer_vs_weeds
                 HealthPoints = healthpoints;
             }
         }
-        public Farmer() { }
-
 
         // -- Getter Setters --
         public string GetUsername()
@@ -44,12 +44,16 @@ namespace Farmer_vs_weeds
         {
             return AttackDices;
         }
+        public string GetTypes()
+        {
+            return Types;
+        }
 
         // -- Methods --
 
         public void ShowInfos()
         {
-            Console.WriteLine($"{Username} has {HealthPoints}hp left and {AttackDices} dices.");
+            Console.WriteLine($"{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices.");
         }
 
         public virtual int Attack()

@@ -10,7 +10,7 @@ namespace Farmer_vs_weeds.Farmers
     {
         // -- Constructor Statement --
 
-        public ChemFarmer(string username, int healthPoints, int attackDices) : base(username, healthPoints, attackDices)
+        public ChemFarmer(string username, int healthPoints, int attackDices, string types) : base(username, healthPoints, attackDices,types)
         {
             bool correctChemFarmerHP = false;
 
