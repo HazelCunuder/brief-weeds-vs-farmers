@@ -10,10 +10,15 @@ namespace Farmer_vs_weeds.Menu
     internal class Tournament
     {
 
-
-
+        // --- Methods ---
         public static void TournamentMenu()
-        {   
+        {
+            int PlayerChoice;
+            int FarmerRandom = 0;
+            bool ChoiceListInvalid = true;
+            bool ChoiceRandomInvalid = true;
+
+
             Console.Clear();
             Console.WriteLine("--- Tournament Start---");
 
@@ -26,18 +31,78 @@ namespace Farmer_vs_weeds.Menu
                 totalFarmers++;
             }
 
-            if (totalFarmers < 2)
+            if (totalFarmers < 1)
             {
-                Console.Write("\nYou need at least 2 farmers to start a tournament\n");
+                Console.Write("\nYou need at least 1 farmers create to start a tournament\n");
                 Console.WriteLine("\nPress any key to return menu");
                 Console.ReadKey();
                 Console.Clear();
                 Menu.DisplayMenu();
             }
 
+            // Choice in List of Farmer created bye the User
+            Console.WriteLine("\nList of your farmers :\n");
+            for (int i = 0; i < Farmers.Count; i++)
+            {
+                Console.WriteLine($"{i + 1} - {Farmers[i].GetUsername()} Type {Farmers[i].GetTypes()} HP {Farmers[i].GetHPs()} Attack Dice {Farmers[i].GetAttackDices()}\n");
+            };
+
+            //Player Choose a farmer fron the list
+            while (ChoiceListInvalid)
+                {
+                    Console.WriteLine("\n--- Choose your Farmer with number  ---\n");
+                    PlayerChoice = Convert.ToInt32(Console.ReadLine());
+            
+                if (PlayerChoice < 1 || PlayerChoice > Farmers.Count)
+                {
+                    Console.WriteLine("\nError , Invalid choice");
+                }
+                else
+                {
+                    Console.WriteLine("\nYou have selected farmer number : " + PlayerChoice);
+                    ChoiceListInvalid = false;
+                }
 
 
+            }
 
-        }
+            // Choice for number of random Farmers participating in the tournament
+            while (ChoiceRandomInvalid)
+            {
+                Console.WriteLine("\n--- Enter total number of participants (2 to 12) ---\n");
+                    FarmerRandom = Convert.ToInt32(Console.ReadLine());
+
+                if (FarmerRandom < 2 || FarmerRandom > 12)
+                {
+                    Console.WriteLine("\nError , Invalid choice");
+                }
+                else
+                {
+                    Console.WriteLine("\nYou have selected farmer number : " + FarmerRandom);
+                    ChoiceRandomInvalid = false;
+                }
+
+
+            }
+
+            // Generate random opponents for the tournament
+            List<Farmer> opponent = new List<Farmer>();
+
+            for(int i = 0; i  < FarmerRandom; i++)
+            {
+                opponent.Add(FarmerRandomTournament.GenerateFarmer());
+            }
+
+            // Show opponent generated
+            Console.WriteLine("\n--- Opponents generated ---\n");
+            for (int i = 0; i < opponent.Count; i++)
+            {
+                Farmer R = opponent[i];
+                Console.WriteLine($"{i + 1}  {R.GetUsername()}, types: {R.GetTypes()}, HP: {R.GetHPs()}, Attack Dice: {R.GetAttackDices()}");
+            }
+
+            Console.WriteLine($"\nTournament begins with your farmer and {FarmerRandom} random opponents.");
+
+        } 
     }
 }
