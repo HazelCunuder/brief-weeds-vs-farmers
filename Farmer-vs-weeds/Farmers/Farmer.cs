@@ -1,8 +1,10 @@
 ﻿using System.Net.Mail;
+using Farmer_vs_weeds.Menu;
+
 
 namespace Farmer_vs_weeds
 {
-    internal class Farmer
+    public class Farmer
     {
 
         // -- Properties Statements -- 
