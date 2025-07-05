@@ -4,13 +4,22 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Farmer_vs_weeds.Combat;
 
 namespace Farmer_vs_weeds.Menu
 {
-    internal class Tournament
+    public class Tournament
     {
+       // -- Properties Statements -- 
+        public static Farmer FarmerPlayer{ get; set; }
 
         // --- Methods ---
+        public Farmer GetPlayer()
+        {
+            return FarmerPlayer;
+        }
+
+
         public static void TournamentMenu()
         {
             int PlayerChoice;
@@ -47,7 +56,7 @@ namespace Farmer_vs_weeds.Menu
                 Console.WriteLine($"{i + 1} - {Farmers[i].GetUsername()} Type {Farmers[i].GetTypes()} HP {Farmers[i].GetHPs()} Attack Dice {Farmers[i].GetAttackDices()}\n");
             };
 
-            //Player Choose a farmer fron the list
+            //Player Choose a farmer from the list
             while (ChoiceListInvalid)
                 {
                     Console.WriteLine("\n--- Choose your Farmer with number  ---\n");
@@ -60,10 +69,9 @@ namespace Farmer_vs_weeds.Menu
                 else
                 {
                     Console.WriteLine("\nYou have selected farmer number : " + PlayerChoice);
+                    FarmerPlayer = Farmers[PlayerChoice - 1];
                     ChoiceListInvalid = false;
-                }
-
-
+                }              
             }
 
             // Choice for number of random Farmers participating in the tournament
@@ -93,6 +101,7 @@ namespace Farmer_vs_weeds.Menu
                 opponent.Add(FarmerRandomTournament.GenerateFarmer());
             }
 
+            Console.Clear();
             // Show opponent generated
             Console.WriteLine("\n--- Opponents generated ---\n");
             for (int i = 0; i < opponent.Count; i++)
@@ -101,7 +110,8 @@ namespace Farmer_vs_weeds.Menu
                 Console.WriteLine($"{i + 1}  {R.GetUsername()}, types: {R.GetTypes()}, HP: {R.GetHPs()}, Attack Dice: {R.GetAttackDices()}");
             }
 
-            Console.WriteLine($"\nTournament begins with your farmer and {FarmerRandom} random opponents.");
+            Console.WriteLine($"\nTournament begins with your farmer and {FarmerRandom} random opponents.\n");
+            Combat.Combat.Fight(opponent);
 
         } 
     }
