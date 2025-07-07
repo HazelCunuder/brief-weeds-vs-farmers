@@ -1,20 +1,20 @@
 ﻿using System.Net.Mail;
+using Farmer_vs_weeds.Menu;
 
 namespace Farmer_vs_weeds
 {
-    internal class Farmer
+    public class Farmer
     {
-
-        // -- Properties Statements -- 
+        // -- Properties Statements --
         private string Username { get; set; }
-        private int HealthPoints{ get; set; }
+        private int HealthPoints { get; set; }
         private int AttackDices { get; set; }
-   
+        private string Types { get; set; }
 
         // -- Constructor Statement --
-
-        public Farmer(string username, int healthpoints, int attackDices)
+        public Farmer(string username, int healthpoints, int attackDices, string types)
         {
+            Types = types;
             Username = username;
             AttackDices = attackDices;
             if (healthpoints < 0)
@@ -32,32 +32,55 @@ namespace Farmer_vs_weeds
         {
             return Username;
         }
+
         public int GetHPs()
         {
             return HealthPoints;
         }
+
         public void SetHealthPoints(int healthPoints)
         {
             HealthPoints = healthPoints;
         }
+
         public int GetAttackDices()
         {
             return AttackDices;
+        }
+
+        public string GetTypes()
+        {
+            return Types;
         }
 
         // -- Methods --
 
         public void ShowInfos()
         {
-            Console.WriteLine($"{Username} has {HealthPoints}hp left and {AttackDices} dices.");
+            Console.WriteLine(
+                $"{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices."
+            );
         }
+        public virtual int SpecialAttack()
+        {
+            Random dice = new Random();
+            int rollTotal = 0;
+            int attackDice = dice.Next(3, 9);
 
+            for (int i = 0; i < GetAttackDices(); i++)
+            {
+                rollTotal += attackDice;
+            }
+
+            Console.WriteLine($"Special Attack ! roll : {rollTotal}");
+            return rollTotal;
+        }
         public virtual int Attack()
         {
             Random dice = new Random();
             int rollTotal = 0;
             int attackDice = dice.Next(1, 6);
-            
+
             for (int i = 0; i < GetAttackDices(); i++)
             {
                 rollTotal += attackDice;
@@ -69,7 +92,6 @@ namespace Farmer_vs_weeds
 
         public virtual void TakeDamage(int damage)
         {
-            
             HealthPoints -= damage;
         }
     }

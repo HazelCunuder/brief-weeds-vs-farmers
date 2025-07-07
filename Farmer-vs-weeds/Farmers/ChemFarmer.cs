@@ -10,7 +10,8 @@ namespace Farmer_vs_weeds.Farmers
     {
         // -- Constructor Statement --
 
-        public ChemFarmer(string username, int healthPoints, int attackDices) : base(username, healthPoints, attackDices)
+        public ChemFarmer(string username, int healthPoints, int attackDices, string types)
+            : base(username, healthPoints, attackDices, types)
         {
             bool correctChemFarmerHP = false;
 
@@ -43,10 +44,23 @@ namespace Farmer_vs_weeds.Farmers
                     correctChemFarmerHP = true;
                 }
             }
-                
         }
 
         // -- Methods --
+        public override int SpecialAttack()
+        {
+            Random dice = new Random();
+            int rollTotal = 0;
+            int attackDice = dice.Next(3, 9);
+
+            for (int i = 0; i < GetAttackDices(); i++)
+            {
+                rollTotal += attackDice;
+            }
+
+            Console.WriteLine($"Special Attack ! roll : {rollTotal}");
+            return rollTotal;
+        }
         public override int Attack()
         {
             Random dice = new Random();
@@ -61,6 +75,5 @@ namespace Farmer_vs_weeds.Farmers
             Console.WriteLine(rollTotal);
             return rollTotal;
         }
-
     }
 }
