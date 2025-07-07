@@ -8,7 +8,14 @@
 
         // -- Constructor Statement --
 
-        public TractorFarmer(string username, int healthPoints, int attackDices, bool isInTractor, string types) : base(username, healthPoints, attackDices, types)
+        public TractorFarmer(
+            string username,
+            int healthPoints,
+            int attackDices,
+            bool isInTractor,
+            string types
+        )
+            : base(username, healthPoints, attackDices, types)
         {
             inTractor = isInTractor;
 
@@ -16,10 +23,11 @@
 
             while (!correctTractorFarmerHP)
             {
-
                 if (healthPoints < 0)
                 {
-                    Console.WriteLine("You cannot create a Automatic farmer with negative health\n");
+                    Console.WriteLine(
+                        "You cannot create a Automatic farmer with negative health\n"
+                    );
                     Console.Write("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
@@ -33,7 +41,9 @@
                 }
                 else if (healthPoints > 150)
                 {
-                    Console.WriteLine("You cannot create a Automatic Farmer with more than 150HP\n");
+                    Console.WriteLine(
+                        "You cannot create a Automatic Farmer with more than 150HP\n"
+                    );
                     Console.Write("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
@@ -52,12 +62,13 @@
         {
             if (inTractor == true)
             {
-                Console.WriteLine($"{GetUsername()} is in the tractor, they will now take half damage");
+                Console.WriteLine(
+                    $"{GetUsername()} is in the tractor, they will now take half damage"
+                );
 
                 int currentHP = GetHPs();
                 SetHealthPoints(currentHP - damage / 2);
             }
-
         }
 
         public override int Attack()
@@ -73,6 +84,5 @@
 
             return rollTotal;
         }
-
     }
 }
