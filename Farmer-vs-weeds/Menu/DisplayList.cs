@@ -12,7 +12,8 @@ namespace Farmer_vs_weeds.Menu
         {
             bool displayListMenuOn = true;
 
-            List<string> listContent = new List<string> {
+            List<string> listContent = new List<string>
+            {
                 "╔════════════════════════════════╗",
                 "║          Farmer's List         ║",
                 "╚════════════════════════════════╝",
@@ -21,7 +22,8 @@ namespace Farmer_vs_weeds.Menu
 
             for (int i = 0; i < Menu.FarmersList().Count; i++)
             {
-                string farmerLine = $"{i + 1} - {Menu.FarmersList()[i].GetUsername()}, HP: {Menu.FarmersList()[i].GetHPs()}, Attack Dices {Menu.FarmersList()[i].GetAttackDices()}";
+                string farmerLine =
+                    $"{i + 1} - {Menu.FarmersList()[i].GetUsername()}, HP: {Menu.FarmersList()[i].GetHPs()}, Attack Dices {Menu.FarmersList()[i].GetAttackDices()}";
                 listContent.Add(farmerLine);
             }
 
@@ -30,6 +32,7 @@ namespace Farmer_vs_weeds.Menu
 
             while (displayListMenuOn)
             {
+                Console.Clear();
                 Console.CursorVisible = false;
 
                 int consoleWidth = Console.WindowWidth;
@@ -53,7 +56,6 @@ namespace Farmer_vs_weeds.Menu
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine(listContent[i]);
                     Console.ResetColor();
-
                 }
                 ControlMenu();
             }

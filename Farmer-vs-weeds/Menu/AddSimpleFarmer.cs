@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Farmer_vs_weeds.Menu
+﻿namespace Farmer_vs_weeds.Menu
 {
     internal class AddSimpleFarmer
     {
         public static void SimpleFarmer()
-
-
         {
             string username;
             int hp = 0;
             int attackDices = 0;
             string types = "";
-            bool inTractor = false;
-            int menuSelect = 4;
 
-            bool addFarmer = true;
             bool validHp = false;
             bool validAttackDices = false;
 
@@ -43,7 +32,6 @@ namespace Farmer_vs_weeds.Menu
                     hp = inputUser;
                     break;
                 }
-
             }
             while (!validAttackDices)
             {
@@ -63,7 +51,9 @@ namespace Farmer_vs_weeds.Menu
 
             Menu.FarmersList().Add(new Farmer(username, hp, attackDices, types));
             Console.Clear();
-            Console.WriteLine($"\n{types} {username} create with {hp} HP and {attackDices} attack\n");
+            Console.WriteLine(
+                $"\n{types} {username} create with {hp} HP and {attackDices} attack\n"
+            );
         }
     }
 }

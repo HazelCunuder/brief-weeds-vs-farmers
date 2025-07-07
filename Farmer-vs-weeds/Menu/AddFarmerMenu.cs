@@ -1,20 +1,24 @@
-﻿namespace Farmer_vs_weeds.Menu
+﻿using Farmer_vs_weeds.Audio;
+using NAudio.Wave;
+
+namespace Farmer_vs_weeds.Menu
 {
     internal class AddFarmerMenu
     {
         // -- Methods --
         public static void AddFarmer()
         {
-            string username;
-            int hp = 0;
-            int attackDices = 0;
-            string types = "";
-            bool inTractor = false;
+            string bgm = Path.Combine("Audio", "main-menu-bgm.wav");
+            string scrollOptions = Path.Combine("Audio", "scroll-menu.wav");
+            string selectOption = Path.Combine("Audio", "select-option.wav");
+
+            var sfxScroll = new AudioFileReader(scrollOptions);
+            var sfxSelect = new AudioFileReader(selectOption);
+            var sfxDevice = new WaveOutEvent();
+
             int menuSelect = 4;
 
             bool addFarmer = true;
-            bool validHp = false;
-            bool validAttackDices = false;
 
             string[] display = new string[]
             {
@@ -33,7 +37,7 @@
             {
                 Console.Clear();
                 DisplayFarmer();
-                
+
                 MenuControls();
             }
 
@@ -41,16 +45,15 @@
             {
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
 
-
-                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect < 8)
+                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect < 11)
                 {
                     menuSelect++;
-                    Console.Clear();
+                    SoundControl.PlaySoundEffect(scrollOptions);
                 }
                 else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect > 4)
                 {
                     menuSelect--;
-                    Console.Clear();
+                    SoundControl.PlaySoundEffect(scrollOptions);
                 }
                 else if (keyPressed.Key == ConsoleKey.Enter)
                 {
@@ -67,11 +70,9 @@
                             break;
                         case 8:
                             addFarmer = false;
-                            Console.Clear();
                             Menu.DisplayMenu();
                             break;
                         default:
-                            Console.Clear();
                             break;
                     }
                 }

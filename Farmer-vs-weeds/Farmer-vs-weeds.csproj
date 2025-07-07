@@ -20,10 +20,18 @@
 
   <ItemGroup>
     <None Remove="Audio\main-menu-bgm.wav" />
+    <None Remove="Audio\scroll-menu.wav" />
+    <None Remove="Audio\select-option.wav" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Audio\main-menu-bgm.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Audio\scroll-menu.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Audio\select-option.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

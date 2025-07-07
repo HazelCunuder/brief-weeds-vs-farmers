@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using Farmer_vs_weeds.Audio;
+using NAudio.Wave;
 
 namespace Farmer_vs_weeds.Menu
 {
@@ -15,11 +16,21 @@ namespace Farmer_vs_weeds.Menu
         {
             return Farmers;
         }
+
         public static void DisplayMenu()
         {
+            string bgm = Path.Combine("Audio", "main-menu-bgm.wav");
+            string scrollOptions = Path.Combine("Audio", "scroll-menu.wav");
+            string selectOption = Path.Combine("Audio", "select-option.wav");
+
+            var sfxScroll = new AudioFileReader(scrollOptions);
+            var sfxSelect = new AudioFileReader(selectOption);
+            var sfxDevice = new WaveOutEvent();
+
             bool isMenuOn = true;
             int menuSelect = 4;
-            string[] menuContent = new string[] {
+            string[] menuContent = new string[]
+            {
                 "╔═══════════════════════════════╗",
                 "║        Brawling Farmers       ║",
                 "║═══════════════════════════════║",
@@ -32,17 +43,14 @@ namespace Farmer_vs_weeds.Menu
                 "║ 6 - Show previous Winners     ║",
                 "║                               ║",
                 "║ 0 - Quit                      ║",
-                "╚═══════════════════════════════╝"
+                "╚═══════════════════════════════╝",
             };
 
             Console.CursorVisible = false;
 
-            string filePath = Path.Combine("Audio", "main-menu-bgm.wav");
-            
-
             if (!isMusicStarted)
             {
-                audioFile = new AudioFileReader(filePath);
+                audioFile = new AudioFileReader(bgm);
                 outputDevice = new WaveOutEvent();
                 outputDevice.Init(audioFile);
                 outputDevice.Play();
@@ -91,84 +99,74 @@ namespace Farmer_vs_weeds.Menu
             void MenuControls()
             {
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
-                
 
                 if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect < 11)
                 {
                     menuSelect++;
-                    Console.Clear();
+                    SoundControl.PlaySoundEffect(scrollOptions);
                 }
                 else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect > 4)
                 {
                     menuSelect--;
-                    Console.Clear();
+                    SoundControl.PlaySoundEffect(scrollOptions);
                 }
                 else if (keyPressed.Key == ConsoleKey.Enter)
                 {
+                    SoundControl.PlaySoundEffect(selectOption);
+
                     switch (menuSelect)
                     {
                         case 4:
-                            Console.Clear();
                             isMenuOn = false;
                             AddFarmerMenu.AddFarmer();
                             break;
                         case 5:
-                            Console.Clear();
                             isMenuOn = false;
                             RemoveFarmer.RemoveFarmerMenu();
                             break;
                         case 6:
-                            Console.Clear();
                             isMenuOn = false;
                             DisplayList.DisplayListMenu();
                             break;
                         case 7:
-                            Console.Clear();
                             isMenuOn = false;
                             Tournament.TournamentMenu();
                             break;
                         case 11:
-                            Console.Clear();
                             isMenuOn = false;
                             break;
                         default:
-                            Console.Clear();
                             break;
                     }
                 }
-                else 
+                else
                 {
+                    SoundControl.PlaySoundEffect(selectOption);
                     switch (keyPressed.Key)
                     {
                         case ConsoleKey.D1:
-                            Console.Clear();
                             isMenuOn = false;
                             AddFarmerMenu.AddFarmer();
                             break;
                         case ConsoleKey.D2:
-                            Console.Clear();
                             isMenuOn = false;
                             RemoveFarmer.RemoveFarmerMenu();
                             break;
                         case ConsoleKey.D3:
-                            Console.Clear();
                             isMenuOn = false;
                             DisplayList.DisplayListMenu();
                             break;
                         case ConsoleKey.D4:
-                            Console.Clear();
                             isMenuOn = false;
                             Tournament.TournamentMenu();
                             break;
                         case ConsoleKey.D0:
-                            Console.Clear();
                             isMenuOn = false;
                             break;
                         default:
-                            Console.Clear();
                             break;
                     }
-                } 
+                }
             }
         }
     }

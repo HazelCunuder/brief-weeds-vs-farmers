@@ -10,7 +10,8 @@ namespace Farmer_vs_weeds.Farmers
     {
         // -- Constructor Statement --
 
-        public ChemFarmer(string username, int healthPoints, int attackDices, string types) : base(username, healthPoints, attackDices,types)
+        public ChemFarmer(string username, int healthPoints, int attackDices, string types)
+            : base(username, healthPoints, attackDices, types)
         {
             bool correctChemFarmerHP = false;
 
@@ -43,7 +44,6 @@ namespace Farmer_vs_weeds.Farmers
                     correctChemFarmerHP = true;
                 }
             }
-                
         }
 
         // -- Methods --
@@ -61,6 +61,5 @@ namespace Farmer_vs_weeds.Farmers
             Console.WriteLine(rollTotal);
             return rollTotal;
         }
-
     }
 }

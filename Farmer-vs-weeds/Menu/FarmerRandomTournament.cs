@@ -11,7 +11,18 @@ namespace Farmer_vs_weeds.Menu
         private static Random Farmer = new Random();
         private static List<string> FarmerName = new List<string>
         {
-            "Loïc", "Hazel", "Julien", "Abdellah", "Nicolas", "Maxime", "Cédric", "Vincent", "Donovan", "Othman", "Amine", "Lucas"
+            "Loïc",
+            "Hazel",
+            "Julien",
+            "Abdellah",
+            "Nicolas",
+            "Maxime",
+            "Cédric",
+            "Vincent",
+            "Donovan",
+            "Othman",
+            "Amine",
+            "Lucas",
         };
 
         // --- Methods ---
@@ -28,27 +39,26 @@ namespace Farmer_vs_weeds.Menu
 
             switch (farmer)
             {
-                case 0 :
+                case 0:
                     types = "Classic Farmer";
                     hp = Farmer.Next(70, 121);
                     attackDices = Farmer.Next(4, 7);
                     break;
 
-                case 1 :
+                case 1:
                     types = "Chem Farmer";
                     hp = Farmer.Next(40, 91);
                     attackDices = Farmer.Next(6, 10);
                     break;
 
-                case 2 :
+                case 2:
                     types = "Tractor Farmer";
                     hp = Farmer.Next(100, 151);
                     attackDices = Farmer.Next(1, 4);
                     break;
             }
 
-            return new Farmer(name, hp, attackDices,types);
-        }   
+            return new Farmer(name, hp, attackDices, types);
+        }
     }
-   
 }

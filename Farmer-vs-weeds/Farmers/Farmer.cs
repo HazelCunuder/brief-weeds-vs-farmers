@@ -4,10 +4,9 @@ namespace Farmer_vs_weeds
 {
     internal class Farmer
     {
-
-        // -- Properties Statements -- 
+        // -- Properties Statements --
         private string Username { get; set; }
-        private int HealthPoints{ get; set; }
+        private int HealthPoints { get; set; }
         private int AttackDices { get; set; }
         private string Types { get; set; }
 
@@ -32,18 +31,22 @@ namespace Farmer_vs_weeds
         {
             return Username;
         }
+
         public int GetHPs()
         {
             return HealthPoints;
         }
+
         public void SetHealthPoints(int healthPoints)
         {
             HealthPoints = healthPoints;
         }
+
         public int GetAttackDices()
         {
             return AttackDices;
         }
+
         public string GetTypes()
         {
             return Types;
@@ -53,7 +56,9 @@ namespace Farmer_vs_weeds
 
         public void ShowInfos()
         {
-            Console.WriteLine($"{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices.");
+            Console.WriteLine(
+                $"{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices."
+            );
         }
 
         public virtual int Attack()
@@ -61,7 +66,7 @@ namespace Farmer_vs_weeds
             Random dice = new Random();
             int rollTotal = 0;
             int attackDice = dice.Next(1, 6);
-            
+
             for (int i = 0; i < GetAttackDices(); i++)
             {
                 rollTotal += attackDice;
@@ -73,7 +78,6 @@ namespace Farmer_vs_weeds
 
         public virtual void TakeDamage(int damage)
         {
-            
             HealthPoints -= damage;
         }
     }
