@@ -25,26 +25,22 @@
             {
                 if (healthPoints < 0)
                 {
-                    Console.WriteLine(
-                        "You cannot create a Automatic farmer with negative health\n"
-                    );
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a Automatic farmer with negative health\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
                 else if (healthPoints < 100)
                 {
-                    Console.WriteLine("You cannot create a Automic Farmer with less than 100HP\n");
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a Automic Farmer with less than 100HP\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
                 else if (healthPoints > 150)
                 {
-                    Console.WriteLine(
-                        "You cannot create a Automatic Farmer with more than 150HP\n"
-                    );
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a Automatic Farmer with more than 150HP\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
@@ -62,7 +58,7 @@
         {
             if (inTractor == true)
             {
-                Console.WriteLine(
+                WriteCentered(
                     $"{GetUsername()} is in the tractor, they will now take half damage"
                 );
 
@@ -83,6 +79,14 @@
             }
 
             return rollTotal;
+        }
+        public static void WriteCentered(string text, bool newline = true)
+        {
+            int leftPadding = (Console.WindowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            if (newline) Console.WriteLine(text);
+            else Console.Write(text);
         }
     }
 }
