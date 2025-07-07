@@ -6,13 +6,14 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Farmer_vs_weeds.Farmers;
+using Farmer_vs_weeds.Combat;
 
 namespace Farmer_vs_weeds.Menu
 {
     internal class Menu
     {
         // -- Properties --
-        private static List<Farmer> Farmers = new List<Farmer>();
+        public static List<Farmer> Farmers = new List<Farmer>();
 
         // -- Methods --
         public static List<Farmer> FarmersList()
@@ -76,6 +77,12 @@ namespace Farmer_vs_weeds.Menu
                         Console.Clear();
                         isMenuOn = false;
                         Tournament.TournamentMenu();
+                        break;
+                    case '5':
+                    case '(':
+                        Console.Clear();
+                        isMenuOn = false;
+                        ChoiceFarmer.SelectFarmer();
                         break;
                     case '0':
                     case 'à':
