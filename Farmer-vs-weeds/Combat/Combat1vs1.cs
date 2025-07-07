@@ -1,11 +1,4 @@
-﻿using Farmer_vs_weeds.Menu;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Farmer_vs_weeds.Combat
+﻿namespace Farmer_vs_weeds.Combat
 {
     internal class Combat1vs1
     {
@@ -13,7 +6,7 @@ namespace Farmer_vs_weeds.Combat
         {
             bool isFightOngoing = true;
             int currentTurn = 1;
-
+          
             int userInput1;
             int damage1;
             int userInput2;
@@ -27,9 +20,23 @@ namespace Farmer_vs_weeds.Combat
             Farmer player1 = ChoiceFarmer.Player1;
             Farmer player2 = ChoiceFarmer.Player2;
 
+            void WriteCentered(string text, bool newline = true)
+            {
+                int leftPadding = (Console.WindowWidth - text.Length) / 2;
+                if (leftPadding < 0)
+                    leftPadding = 0;
+                Console.SetCursorPosition(leftPadding, Console.CursorTop);
+                if (newline)
+                    Console.WriteLine(text);
+                else
+                    Console.Write(text);
+            }
+
             while (isFightOngoing)
             {
-                Console.WriteLine($"\n--- Turn {currentTurn} ---\n");
+                Console.Clear();
+                WriteCentered($"--- Turn {currentTurn} ---");
+                WriteCentered("");
 
                 // --- Player one attack --- 
                 Console.WriteLine($"\n-- {player1.GetUsername()}, choose your attack --\n");
@@ -63,7 +70,9 @@ namespace Farmer_vs_weeds.Combat
 
                 if (player2.GetHPs() <= 0)
                 {
-                    Console.WriteLine($"\n{player1.GetUsername()} has won the fight!");
+                    WriteCentered("");
+                    WriteCentered($"{player1.GetUsername()} has won the fight!");
+                    Console.ReadKey();
                     break;
                 }
 
@@ -99,7 +108,9 @@ namespace Farmer_vs_weeds.Combat
 
                 if (player1.GetHPs() <= 0)
                 {
-                    Console.WriteLine($"\n{player2.GetUsername()} has won the fight!");
+                    WriteCentered("");
+                    WriteCentered($"{player2.GetUsername()} has won the fight!");
+                    Console.ReadKey();
                     break;
                 }
 
@@ -109,8 +120,11 @@ namespace Farmer_vs_weeds.Combat
 
                 
                 currentTurn++;
+                Console.ReadKey();
             }
 
+            WriteCentered("");
+            WriteCentered("Press any key to return to the menu...");
             Console.ReadKey();
             Console.Clear();
             Menu.Menu.DisplayMenu();
