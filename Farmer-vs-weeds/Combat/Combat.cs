@@ -55,6 +55,7 @@ namespace Farmer_vs_weeds.Combat
             }
 
             Console.ReadKey();
+            Menu.Menu.DisplayMenu();
         }
     }
 }
