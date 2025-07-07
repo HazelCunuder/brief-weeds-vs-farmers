@@ -1,3 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+using Farmer_vs_weeds.Farmers;
+using Farmer_vs_weeds.Combat;
 ﻿using Farmer_vs_weeds.Audio;
 using NAudio.Wave;
 
@@ -159,6 +168,10 @@ namespace Farmer_vs_weeds.Menu
                         case ConsoleKey.D4:
                             isMenuOn = false;
                             Tournament.TournamentMenu();
+                            break;
+                        case ConsoleKey.D5:
+                            isMenuOn = false;
+                            ChoiceFarmer.SelectFarmer();
                             break;
                         case ConsoleKey.D0:
                             isMenuOn = false;
