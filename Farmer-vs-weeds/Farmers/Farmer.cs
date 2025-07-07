@@ -54,6 +54,8 @@ namespace Farmer_vs_weeds
         }
 
         // -- Methods --
+
+        // -- Centers Text in Console --
         static void WriteCentered(string text, bool newline = true)
         {
             int leftPadding = (Console.WindowWidth - text.Length) / 2;
@@ -63,10 +65,13 @@ namespace Farmer_vs_weeds
             else Console.Write(text);
         }
 
+        // -- Displays info on the current Farmer --
         public void ShowInfos()
         {
             WriteCentered($"{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices.");
         }
+
+        // -- Base for all special attacks --
         public virtual int SpecialAttack()
         {
             Random dice = new Random();
@@ -81,6 +86,8 @@ namespace Farmer_vs_weeds
             WriteCentered($"\nSpecial Attack ! roll : {rollTotal}\n");
             return rollTotal;
         }
+
+        // -- Base for all standard attacks --
         public virtual int Attack()
         {
             Random dice = new Random();
@@ -95,6 +102,7 @@ namespace Farmer_vs_weeds
             return rollTotal;
         }
 
+        // -- Remove the damage from the Farmer's health --
         public virtual void TakeDamage(int damage)
         {
             HealthPoints -= damage;

@@ -17,6 +17,8 @@ namespace Farmer_vs_weeds.Farmers
 
             while (!correctChemFarmerHP)
             {
+
+                // -- Verify user's health input --
                 if (healthPoints < 0)
                 {
                     WriteCentered("You cannot create a farmer with negative health\n");
@@ -47,7 +49,8 @@ namespace Farmer_vs_weeds.Farmers
         }
 
         // -- Methods --
-        // Centered text helper
+
+        // -- Centers Text in Console --
         static void WriteCentered(string text, bool newline = true)
         {
             int leftPadding = (Console.WindowWidth - text.Length) / 2;
@@ -57,6 +60,7 @@ namespace Farmer_vs_weeds.Farmers
             else Console.Write(text);
         } 
 
+        // -- Allows Chem Farmer to do more damage before having a cooldown --
         public override int SpecialAttack()
         {
             Random dice = new Random();
@@ -71,6 +75,8 @@ namespace Farmer_vs_weeds.Farmers
             WriteCentered($"Special Attack ! roll : {rollTotal}");
             return rollTotal;
         }
+
+        // -- Set standard attack stats --
         public override int Attack()
         {
             Random dice = new Random();
