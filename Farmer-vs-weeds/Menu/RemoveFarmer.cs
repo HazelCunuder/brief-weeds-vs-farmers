@@ -26,6 +26,7 @@ namespace Farmer_vs_weeds.Menu
                 WriteCentered("");
 
                 var farmers = Menu.FarmersList();
+                // -- Chekc if there are farmers to remove --
                 if (farmers.Count == 0)
                 {
                     WriteCentered("No farmers to remove.");
@@ -50,7 +51,7 @@ namespace Farmer_vs_weeds.Menu
             {
                 if (!int.TryParse(Console.ReadLine(), out int input))
                 {
-                    // Invalid input, ignore and return to menu loop
+                    // -- If input invalid, restart the loop --
                     return;
                 }
 
@@ -69,12 +70,7 @@ namespace Farmer_vs_weeds.Menu
                     WriteCentered($"{farmers[input - 1].GetUsername()} has been removed.\n");
                     Console.ResetColor();
                     farmers.RemoveAt(input - 1);
-                    // Wait a bit so user can read the message
-                    System.Threading.Thread.Sleep(1000);
-                }
-                else
-                {
-                    // Invalid number, ignore and continue
+                    Console.ReadKey();
                 }
             }
         }

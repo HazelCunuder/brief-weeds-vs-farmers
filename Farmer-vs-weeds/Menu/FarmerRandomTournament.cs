@@ -13,7 +13,7 @@ namespace Farmer_vs_weeds.Menu
         private static List<string> FarmerName = new List<string>
         {
             "Loïc",
-            "Hazel",
+            "Alexandre",
             "Julien",
             "Abdellah",
             "Nicolas",
@@ -23,7 +23,7 @@ namespace Farmer_vs_weeds.Menu
             "Donovan",
             "Othman",
             "Amine",
-            "Lucas",
+            "Benjamin",
         };
 
         // --- Methods ---
@@ -38,6 +38,7 @@ namespace Farmer_vs_weeds.Menu
             int hp = 0;
             int attackDices = 0;
 
+            // -- Generate random opponents --
             switch (farmer)
             {
                 case 0:
