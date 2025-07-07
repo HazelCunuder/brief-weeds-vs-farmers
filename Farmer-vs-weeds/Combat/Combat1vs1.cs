@@ -14,6 +14,15 @@ namespace Farmer_vs_weeds.Combat
             bool isFightOngoing = true;
             int currentTurn = 1;
 
+            int userInput1;
+            int damage1;
+            int userInput2;
+            int damage2;
+
+            // Cooldown counter
+            int cooldownSpecialAttackP1 = 0;
+            int cooldownSpecialAttackP2 = 0;
+
             // Recover the player via the Tournament class
             Farmer player1 = ChoiceFarmer.Player1;
             Farmer player2 = ChoiceFarmer.Player2;
@@ -22,9 +31,34 @@ namespace Farmer_vs_weeds.Combat
             {
                 Console.WriteLine($"\n--- Turn {currentTurn} ---\n");
 
-                // Player attacks enemy
-                Console.WriteLine($"\n{player1.GetUsername()} attacks!\n");
-                player2.TakeDamage(player1.Attack());
+                // --- Player one attack --- 
+                Console.WriteLine($"\n-- {player1.GetUsername()}, choose your attack --\n");
+                Console.WriteLine("1 - Normal Attack");
+
+                // Checks if the special attack is available
+                if (cooldownSpecialAttackP1 == 0)
+                {
+                    Console.WriteLine("2 - Special Attack (Available)");
+                }
+                else
+                {
+                    Console.WriteLine($"2 - Special Attack (Cooldown: {cooldownSpecialAttackP1} turns left)");
+                }
+
+                // Recovers player 1's choice
+                userInput1 = Convert.ToInt32(Console.ReadLine());          
+
+                if (userInput1 == 2 && cooldownSpecialAttackP1 == 0)
+                {
+                    damage1 = player1.SpecialAttack();
+                    cooldownSpecialAttackP1 = 2;
+                }
+                else
+                {
+                    damage1 = player1.Attack();
+                }
+
+                player2.TakeDamage(damage1);
                 player2.ShowInfos();
 
                 if (player2.GetHPs() <= 0)
@@ -33,10 +67,35 @@ namespace Farmer_vs_weeds.Combat
                     break;
                 }
 
-                // Enemy attacks player
-                Console.WriteLine($"\n{player2.GetUsername()} attacks!\n");
-                player1.TakeDamage(player2.Attack());
-                player1.ShowInfos();
+                // --- Player two attack ---
+                Console.WriteLine($"\n-- {player2.GetUsername()}, choose your attack --");
+                Console.WriteLine("1 - Normal Attack");
+
+                // Checks if the special attack is available
+                if (cooldownSpecialAttackP2 == 0)
+                {
+                    Console.WriteLine("2 - Special Attack (Available)");
+                }
+                else
+                {
+                    Console.WriteLine($"2 - Special Attack (Cooldown: {cooldownSpecialAttackP2} turns left)");
+                }
+
+                // Recovers player 2's choice
+                userInput2 = Convert.ToInt32(Console.ReadLine());
+
+                if (userInput2 == 2 && cooldownSpecialAttackP2 == 0)
+                {
+                    damage2 = player2.SpecialAttack();
+                    cooldownSpecialAttackP1 = 2;
+                }
+                else
+                {
+                    damage2 = player2.Attack();
+                }
+
+                player2.TakeDamage(damage2);
+                player2.ShowInfos();
 
                 if (player1.GetHPs() <= 0)
                 {
@@ -44,6 +103,11 @@ namespace Farmer_vs_weeds.Combat
                     break;
                 }
 
+                // Cooldown reduction at end of turn
+                if (cooldownSpecialAttackP1 > 0) cooldownSpecialAttackP1--;
+                if (cooldownSpecialAttackP2 > 0) cooldownSpecialAttackP2--;
+
+                
                 currentTurn++;
             }
 
