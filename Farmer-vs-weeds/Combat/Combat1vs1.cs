@@ -9,6 +9,16 @@ namespace Farmer_vs_weeds.Combat
 {
     internal class Combat1vs1
     {
+
+        // Centered text helper
+        static void WriteCentered(string text, bool newline = true)
+        {
+            int leftPadding = (Console.WindowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            if (newline) Console.WriteLine(text);
+            else Console.Write(text);
+        }
         public static void FightOneVsOne()
         {
             bool isFightOngoing = true;
@@ -29,20 +39,20 @@ namespace Farmer_vs_weeds.Combat
 
             while (isFightOngoing)
             {
-                Console.WriteLine($"\n--- Turn {currentTurn} ---\n");
+                WriteCentered($"\n--- Turn {currentTurn} ---\n");
 
                 // --- Player one attack --- 
-                Console.WriteLine($"\n-- {player1.GetUsername()}, choose your attack --\n");
-                Console.WriteLine("1 - Normal Attack");
+                WriteCentered($"\n-- {player1.GetUsername()}, choose your attack --\n");
+                WriteCentered("1 - Normal Attack");
 
                 // Checks if the special attack is available
                 if (cooldownSpecialAttackP1 == 0)
                 {
-                    Console.WriteLine("2 - Special Attack (Available)");
+                    WriteCentered("2 - Special Attack (Available)\n");
                 }
                 else
                 {
-                    Console.WriteLine($"2 - Special Attack (Cooldown: {cooldownSpecialAttackP1} turns left)");
+                    WriteCentered($"2 - Special Attack (Cooldown: {cooldownSpecialAttackP1} turns left)\n");
                 }
 
                 // Recovers player 1's choice
@@ -63,22 +73,22 @@ namespace Farmer_vs_weeds.Combat
 
                 if (player2.GetHPs() <= 0)
                 {
-                    Console.WriteLine($"\n{player1.GetUsername()} has won the fight!");
+                    WriteCentered($"\n{player1.GetUsername()} has won the fight!\n");
                     break;
                 }
 
                 // --- Player two attack ---
-                Console.WriteLine($"\n-- {player2.GetUsername()}, choose your attack --");
-                Console.WriteLine("1 - Normal Attack");
+                WriteCentered($"\n-- {player2.GetUsername()}, choose your attack --\n");
+                WriteCentered("1 - Normal Attack");
 
                 // Checks if the special attack is available
                 if (cooldownSpecialAttackP2 == 0)
                 {
-                    Console.WriteLine("2 - Special Attack (Available)");
+                    WriteCentered("2 - Special Attack (Available)\n");
                 }
                 else
                 {
-                    Console.WriteLine($"2 - Special Attack (Cooldown: {cooldownSpecialAttackP2} turns left)");
+                    WriteCentered($"2 - Special Attack (Cooldown: {cooldownSpecialAttackP2} turns left)\n");
                 }
 
                 // Recovers player 2's choice
@@ -99,7 +109,7 @@ namespace Farmer_vs_weeds.Combat
 
                 if (player1.GetHPs() <= 0)
                 {
-                    Console.WriteLine($"\n{player2.GetUsername()} has won the fight!");
+                    WriteCentered($"\n{player2.GetUsername()} has won the fight!\n");
                     break;
                 }
 

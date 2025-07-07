@@ -46,7 +46,7 @@ namespace Farmer_vs_weeds.Combat
             for (int i = 0; i < allFarmers.Count; i++)
             {
                 Farmer farmer = allFarmers[i];
-                Console.WriteLine($"{i + 1} - {farmer.GetUsername()} , Type: {farmer.GetTypes()}, HP: {farmer.GetHPs()}, Attack Dice: {farmer.GetAttackDices()}");
+                WriteCentered($"{i + 1} - {farmer.GetUsername()} , Type: {farmer.GetTypes()}, HP: {farmer.GetHPs()}, Attack Dice: {farmer.GetAttackDices()}");
             }
 
             // Player one choice
