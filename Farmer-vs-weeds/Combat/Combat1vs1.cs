@@ -2,16 +2,6 @@
 {
     internal class Combat1vs1
     {
-
-        // Centered text helper
-        static void WriteCentered(string text, bool newline = true)
-        {
-            int leftPadding = (Console.WindowWidth - text.Length) / 2;
-            if (leftPadding < 0) leftPadding = 0;
-            Console.SetCursorPosition(leftPadding, Console.CursorTop);
-            if (newline) Console.WriteLine(text);
-            else Console.Write(text);
-        }
         public static void FightOneVsOne()
         {
             bool isFightOngoing = true;
@@ -22,14 +12,15 @@
             int userInput2;
             int damage2;
 
-            // Cooldown counter
+            // -- Cooldown Counter --
             int cooldownSpecialAttackP1 = 0;
             int cooldownSpecialAttackP2 = 0;
 
-            // Recover the player via the Tournament class
+            // -- Recover our choices from the ChoiceFarmer class --
             Farmer player1 = ChoiceFarmer.Player1;
             Farmer player2 = ChoiceFarmer.Player2;
 
+            // -- Used to center text in console --
             void WriteCentered(string text, bool newline = true)
             {
                 int leftPadding = (Console.WindowWidth - text.Length) / 2;
@@ -62,7 +53,7 @@
                     WriteCentered($"2 - Special Attack (Cooldown: {cooldownSpecialAttackP1} turns left)\n");
                 }
 
-                // Recovers player 1's choice
+                // -- Recovers player 1's choice --
                 userInput1 = Convert.ToInt32(Console.ReadLine());          
 
                 if (userInput1 == 2 && cooldownSpecialAttackP1 == 0)
@@ -88,7 +79,7 @@
                 WriteCentered($"\n-- {player2.GetUsername()}, choose your attack --\n");
                 WriteCentered("1 - Normal Attack");
 
-                // Checks if the special attack is available
+                // -- Checks if the special attack is available --
                 if (cooldownSpecialAttackP2 == 0)
                 {
                     WriteCentered("2 - Special Attack (Available)\n");
@@ -98,7 +89,7 @@
                     WriteCentered($"2 - Special Attack (Cooldown: {cooldownSpecialAttackP2} turns left)\n");
                 }
 
-                // Recovers player 2's choice
+                // -- Recovers player 2's choice --
                 userInput2 = Convert.ToInt32(Console.ReadLine());
 
                 if (userInput2 == 2 && cooldownSpecialAttackP2 == 0)
@@ -120,7 +111,7 @@
                     break;
                 }
 
-                // Cooldown reduction at end of turn
+                // -- Cooldown reduction at end of turn --
                 if (cooldownSpecialAttackP1 > 0) cooldownSpecialAttackP1--;
                 if (cooldownSpecialAttackP2 > 0) cooldownSpecialAttackP2--;
 
