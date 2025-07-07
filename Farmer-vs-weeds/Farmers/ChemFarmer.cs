@@ -58,7 +58,6 @@ namespace Farmer_vs_weeds.Farmers
                 rollTotal += attackDice;
             }
 
-            Console.WriteLine(rollTotal);
             return rollTotal;
         }
     }
