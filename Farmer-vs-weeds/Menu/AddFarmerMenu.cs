@@ -57,28 +57,19 @@
                     switch (menuSelect)
                     {
                         case 4:
-
                             AddSimpleFarmer.SimpleFarmer();
                             break;
-
                         case 5:
-
                             AddChemFarmer.ChemFarmer();
                             break;
-
                         case 6:
-
                             AddTractorFarmer.TractorFarmer();
                             break;
-
                         case 8:
-
-                            Console.WriteLine("\nReturning to main menu...");
                             addFarmer = false;
                             Console.Clear();
                             Menu.DisplayMenu();
                             break;
-
                         default:
                             Console.Clear();
                             break;
@@ -92,26 +83,20 @@
                         case ConsoleKey.NumPad1:
                             AddSimpleFarmer.SimpleFarmer();
                             break;
-
                         case ConsoleKey.D2:
                         case ConsoleKey.NumPad2:
                             AddChemFarmer.ChemFarmer();
                             break;
-
                         case ConsoleKey.D3:
                         case ConsoleKey.NumPad3:
                             AddTractorFarmer.TractorFarmer();
                             break;
-
                         case ConsoleKey.D0:
                         case ConsoleKey.NumPad0:
-
-                            Console.WriteLine("\nReturning to main menu...");
                             addFarmer = false;
                             Console.Clear();
                             Menu.DisplayMenu();
                             break;
-
                         default:
                             Console.Clear();
                             break;

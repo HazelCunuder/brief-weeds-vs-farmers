@@ -1,9 +1,14 @@
-﻿namespace Farmer_vs_weeds.Menu
+﻿using NAudio.Wave;
+
+namespace Farmer_vs_weeds.Menu
 {
     internal class Menu
     {
         // -- Properties --
         private static List<Farmer> Farmers = new List<Farmer>();
+        private static IWavePlayer? outputDevice;
+        private static AudioFileReader? audioFile;
+        private static bool isMusicStarted = false;
 
         // -- Methods --
         public static List<Farmer> FarmersList()
@@ -31,6 +36,17 @@
             };
 
             Console.CursorVisible = false;
+
+            string filePath = @"main-menu-bgm.wav";
+
+            if (!isMusicStarted)
+            {
+                audioFile = new AudioFileReader(filePath);
+                outputDevice = new WaveOutEvent();
+                outputDevice.Init(audioFile);
+                outputDevice.Play();
+                isMusicStarted = true;
+            }
 
             while (isMenuOn)
             {
