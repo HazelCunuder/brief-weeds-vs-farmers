@@ -15,20 +15,8 @@ namespace Farmer_vs_weeds.Combat
             int currentTurn = 1;
 
             // Recover the player via the Tournament class
-            Farmer player1 = Tournament.FarmerPlayer;
-            Farmer player2 = Tournament.FarmerPlayer;
-
-            if (player1 == null ||player2 == null)
-            {
-                Console.WriteLine("\nBoth players must be selected.\n" +
-                    "\nPlease create 2 characters for a 1 vs 1 fight\n" +
-                    "\npress any key to return to the menu\n");
-
-                Console.ReadKey();
-                Console.Clear();
-                Menu.Menu.DisplayMenu();
-                return;
-            }
+            Farmer player1 = ChoiceFarmer.Player1;
+            Farmer player2 = ChoiceFarmer.Player2;
 
             while (isFightOngoing)
             {
@@ -42,7 +30,6 @@ namespace Farmer_vs_weeds.Combat
                 if (player2.GetHPs() <= 0)
                 {
                     Console.WriteLine($"\n{player1.GetUsername()} has won the fight!");
-                    isFightOngoing = false;
                     break;
                 }
 
@@ -54,7 +41,6 @@ namespace Farmer_vs_weeds.Combat
                 if (player1.GetHPs() <= 0)
                 {
                     Console.WriteLine($"\n{player2.GetUsername()} has won the fight!");
-                    isFightOngoing = false;
                     break;
                 }
 
@@ -62,6 +48,7 @@ namespace Farmer_vs_weeds.Combat
             }
 
             Console.ReadKey();
+            Console.Clear();
             Menu.Menu.DisplayMenu();
         }
     }

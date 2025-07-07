@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Farmer_vs_weeds.Menu;
+using Farmer_vs_weeds.Combat;
 
 namespace Farmer_vs_weeds.Combat
 {
+
     internal class ChoiceFarmer
     {
+        public static Farmer Player1;
+        public static Farmer Player2;
+
         public static void SelectFarmer()
         {          
-            int userInput;
             int player1Index = -1;
             int player2Index = -1;
 
@@ -67,12 +71,13 @@ namespace Farmer_vs_weeds.Combat
                 }
             }
 
-            Farmer Player1 = allFarmers[player1Index];
-            Farmer Player2 = allFarmers[player2Index];
+            ChoiceFarmer.Player1 = allFarmers[player1Index];
+            ChoiceFarmer.Player2 = allFarmers[player2Index];
 
             Console.Clear();
-            Console.WriteLine($"\n{Player1.GetUsername()} VS {Player2.GetUsername()} — Let the battle begin!\n");
+            Console.WriteLine($"\n{ChoiceFarmer.Player1.GetUsername()} VS {ChoiceFarmer.Player2.GetUsername()} — Let the battle begin!\n");
 
+            Combat1vs1.FightOneVsOne();
 
 
         }
