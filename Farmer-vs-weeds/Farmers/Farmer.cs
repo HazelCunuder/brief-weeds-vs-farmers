@@ -92,7 +92,6 @@ namespace Farmer_vs_weeds
                 rollTotal += attackDice;
             }
 
-            WriteCentered($"\nAttack ! roll : {rollTotal}\n");
             return rollTotal;
         }
 

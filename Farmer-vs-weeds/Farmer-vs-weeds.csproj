@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Combat\Combat.cs" />
     <Compile Remove="Menu\FarmerMenu.cs" />
   </ItemGroup>
 
@@ -34,10 +35,6 @@
     <Content Include="Audio\select-option.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Combat\" />
   </ItemGroup>
 
 	<ItemGroup>

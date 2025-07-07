@@ -50,6 +50,7 @@ namespace Farmer_vs_weeds.Combat
                 if (enemy.GetHPs() <= 0)
                 {
                     WriteCentered($"{player.GetUsername()} has won the fight!");
+                    Console.ReadKey();
                     isFightOngoing = false;
                     break;
                 }
@@ -64,6 +65,7 @@ namespace Farmer_vs_weeds.Combat
                 if (player.GetHPs() <= 0)
                 {
                     WriteCentered($"{enemy.GetUsername()} has won the fight!");
+                    Console.ReadKey();
                     isFightOngoing = false;
                     break;
                 }
