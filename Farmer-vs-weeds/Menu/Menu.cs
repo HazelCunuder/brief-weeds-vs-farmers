@@ -13,7 +13,7 @@ namespace Farmer_vs_weeds.Menu
     internal class Menu
     {
         // -- Properties --
-        private static List<Farmer> Farmers = new List<Farmer>();
+        public static List<Farmer> Farmers = new List<Farmer>();
 
         // -- Methods --
         public static List<Farmer> FarmersList()
@@ -82,7 +82,7 @@ namespace Farmer_vs_weeds.Menu
                     case '(':
                         Console.Clear();
                         isMenuOn = false;
-                        Combat1vs1.FightOneVsOne();
+                        ChoiceFarmer.SelectFarmer();
                         break;
                     case '0':
                     case 'à':
