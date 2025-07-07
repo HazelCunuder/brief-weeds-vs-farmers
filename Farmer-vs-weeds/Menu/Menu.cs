@@ -1,14 +1,15 @@
-﻿using System;
+﻿﻿using Farmer_vs_weeds.Audio;
+using Farmer_vs_weeds.Combat;
+using Farmer_vs_weeds.Farmers;
+using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Farmer_vs_weeds.Farmers;
-using Farmer_vs_weeds.Combat;
-﻿using Farmer_vs_weeds.Audio;
-using NAudio.Wave;
 
 namespace Farmer_vs_weeds.Menu
 {
@@ -64,6 +65,7 @@ namespace Farmer_vs_weeds.Menu
                 outputDevice.Init(audioFile);
                 outputDevice.Play();
                 isMusicStarted = true;
+                audioFile.Volume = 0.1f;
             }
 
             while (isMenuOn)
