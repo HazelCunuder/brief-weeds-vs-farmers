@@ -61,7 +61,7 @@ namespace Farmer_vs_weeds.Guide
                 if (keyPressed.Key == ConsoleKey.D0)
                 {
                     inGuide = false;
-                    GuideMenu.Guide();
+                    Menu.GuideMenu.Guide();
                 }
             }
         }
