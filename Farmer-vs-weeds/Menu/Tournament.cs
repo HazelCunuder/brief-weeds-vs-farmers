@@ -5,7 +5,7 @@ using Farmer_vs_weeds.Farmers;
 
 namespace Farmer_vs_weeds.Menu
 {
-    internal class Tournament
+    public class Tournament
     {
         public static void TournamentMenu()
         {
@@ -109,6 +109,7 @@ namespace Farmer_vs_weeds.Menu
             Console.Clear();
             WriteCentered("--- Opponents Generated ---");
             WriteCentered("");
+	    
             for (int i = 0; i < opponent.Count; i++)
             {
                 Farmer r = opponent[i];
@@ -116,7 +117,7 @@ namespace Farmer_vs_weeds.Menu
                     $"{i + 1} - {r.GetUsername()} | Type: {r.GetTypes()} | HP: {r.GetHPs()} | Dice: {r.GetAttackDices()}"
                 );
             }
-
+	    
             WriteCentered("");
             WriteCentered(
                 $"Tournament begins with your farmer and {FarmerRandom} random opponents."

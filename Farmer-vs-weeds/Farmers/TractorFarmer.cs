@@ -83,7 +83,6 @@
             }
 
             return rollTotal;
-            Console.WriteLine(rollTotal);
         }
     }
 }
