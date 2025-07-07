@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Combat\Combat.cs" />
     <Compile Remove="Menu\FarmerMenu.cs" />
   </ItemGroup>
 
