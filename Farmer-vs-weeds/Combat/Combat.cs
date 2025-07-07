@@ -19,7 +19,7 @@ namespace Farmer_vs_weeds.Combat
                 return;
             }
 
-            Farmer enemy = opponent[0]; // opponent[0] pour prendre le 1er adversaire dans la liste
+            Farmer enemy = opponent[0]; // opponent[0] to take the 1st opponent in the list
 
             while (isFightOngoing)
             {

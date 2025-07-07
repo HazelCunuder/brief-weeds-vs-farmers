@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Farmer_vs_weeds.Farmers;
+using Farmer_vs_weeds.Combat;
 
 namespace Farmer_vs_weeds.Menu
 {
@@ -76,6 +77,12 @@ namespace Farmer_vs_weeds.Menu
                         Console.Clear();
                         isMenuOn = false;
                         Tournament.TournamentMenu();
+                        break;
+                    case '5':
+                    case '(':
+                        Console.Clear();
+                        isMenuOn = false;
+                        Combat1vs1.FightOneVsOne();
                         break;
                     case '0':
                     case 'à':
