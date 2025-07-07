@@ -37,7 +37,8 @@ namespace Farmer_vs_weeds.Menu
 
             Console.CursorVisible = false;
 
-            string filePath = @"main-menu-bgm.wav";
+            string filePath = Path.Combine("Audio", "main-menu-bgm.wav");
+            
 
             if (!isMusicStarted)
             {

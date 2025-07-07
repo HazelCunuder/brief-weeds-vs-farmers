@@ -9,7 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Menu\FarmerMenu.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Audio\main-menu-bgm.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Audio\main-menu-bgm.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
