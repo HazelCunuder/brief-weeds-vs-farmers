@@ -63,46 +63,7 @@
 
                         case 5:
 
-                            types = "Chem Farmer";
-                            Console.Clear();
-                            Console.Write("\nName: ");
-                            username = Console.ReadLine();
-
-                            while (!validHp)
-                            {
-                                Console.WriteLine("\nChoose between 40 and 90 life points ");
-                                int inputUser = Convert.ToInt32(Console.ReadLine());
-
-                                if (inputUser < 40 || inputUser > 90)
-                                {
-                                    Console.WriteLine("Error,follow the instructions ");
-                                }
-                                else
-                                {
-                                    hp = inputUser;
-                                    break;
-                                }
-
-                            }
-                            while (!validAttackDices)
-                            {
-                                Console.WriteLine("\nChoose the number of attack dice between 6-9 d6");
-                                int inputUser = Convert.ToInt32(Console.ReadLine());
-
-                                if (inputUser < 6 || inputUser > 9)
-                                {
-                                    Console.WriteLine("Error,follow the instructions ");
-                                }
-                                else
-                                {
-                                    attackDices = inputUser;
-                                    break;
-                                }
-                            }
-
-                            Menu.FarmersList().Add(new Farmer(username, hp, attackDices, types));
-                            Console.Clear();
-                            Console.WriteLine($"\n{types} {username} create with {hp} HP and {attackDices} attack\n");
+                            AddChemFarmer.ChemFarmer();
                             break;
 
                         case 6:

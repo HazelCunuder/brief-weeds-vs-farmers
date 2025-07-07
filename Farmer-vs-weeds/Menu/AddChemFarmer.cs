@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Farmer_vs_weeds.Farmers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace Farmer_vs_weeds.Menu
 {
-    internal class AddSimpleFarmer
+    internal class AddChemFarmer
     {
-        public static void SimpleFarmer()
-
-
+        public static void ChemFarmer()
         {
             string username;
             int hp = 0;
@@ -23,18 +22,17 @@ namespace Farmer_vs_weeds.Menu
             bool validHp = false;
             bool validAttackDices = false;
 
-            Console.Clear();
-            types = "Classic Farmer";
+            types = "Chem Farmer";
             Console.Clear();
             Console.Write("\nName: ");
             username = Console.ReadLine();
 
             while (!validHp)
             {
-                Console.WriteLine("\nChoose between 70 and 120 life points ");
+                Console.WriteLine("\nChoose between 40 and 90 life points ");
                 int inputUser = Convert.ToInt32(Console.ReadLine());
 
-                if (inputUser < 70 || inputUser > 120)
+                if (inputUser < 40 || inputUser > 90)
                 {
                     Console.WriteLine("Error,follow the instructions ");
                 }
@@ -47,10 +45,10 @@ namespace Farmer_vs_weeds.Menu
             }
             while (!validAttackDices)
             {
-                Console.WriteLine("\nChoose the number of attack dice between 4-6 d6");
+                Console.WriteLine("\nChoose the number of attack dice between 6-9 d6");
                 int inputUser = Convert.ToInt32(Console.ReadLine());
 
-                if (inputUser < 3 || inputUser > 6)
+                if (inputUser < 6 || inputUser > 9)
                 {
                     Console.WriteLine("Error,follow the instructions ");
                 }
