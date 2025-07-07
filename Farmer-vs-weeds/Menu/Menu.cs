@@ -1,20 +1,36 @@
-﻿namespace Farmer_vs_weeds.Menu
+﻿using Farmer_vs_weeds.Audio;
+using NAudio.Wave;
+
+namespace Farmer_vs_weeds.Menu
 {
     internal class Menu
     {
         // -- Properties --
         private static List<Farmer> Farmers = new List<Farmer>();
+        private static IWavePlayer? outputDevice;
+        private static AudioFileReader? audioFile;
+        private static bool isMusicStarted = false;
 
         // -- Methods --
         public static List<Farmer> FarmersList()
         {
             return Farmers;
         }
+
         public static void DisplayMenu()
         {
+            string bgm = Path.Combine("Audio", "main-menu-bgm.wav");
+            string scrollOptions = Path.Combine("Audio", "scroll-menu.wav");
+            string selectOption = Path.Combine("Audio", "select-option.wav");
+
+            var sfxScroll = new AudioFileReader(scrollOptions);
+            var sfxSelect = new AudioFileReader(selectOption);
+            var sfxDevice = new WaveOutEvent();
+
             bool isMenuOn = true;
-            int menuSelect = 0;
-            string[] menuContent = new string[] {
+            int menuSelect = 4;
+            string[] menuContent = new string[]
+            {
                 "╔═══════════════════════════════╗",
                 "║        Brawling Farmers       ║",
                 "║═══════════════════════════════║",
@@ -27,10 +43,19 @@
                 "║ 6 - Show previous Winners     ║",
                 "║                               ║",
                 "║ 0 - Quit                      ║",
-                "╚═══════════════════════════════╝"
+                "╚═══════════════════════════════╝",
             };
 
             Console.CursorVisible = false;
+
+            if (!isMusicStarted)
+            {
+                audioFile = new AudioFileReader(bgm);
+                outputDevice = new WaveOutEvent();
+                outputDevice.Init(audioFile);
+                outputDevice.Play();
+                isMusicStarted = true;
+            }
 
             while (isMenuOn)
             {
@@ -74,103 +99,75 @@
             void MenuControls()
             {
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
-                
 
-                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect != menuContent.Length - 1)
+                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect < 11)
                 {
                     menuSelect++;
-                    Console.Clear();
+                    SoundControl.PlaySoundEffect(scrollOptions);
                 }
-                else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect >= 1)
+                else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect > 4)
                 {
                     menuSelect--;
-                    Console.Clear();
+                    SoundControl.PlaySoundEffect(scrollOptions);
                 }
                 else if (keyPressed.Key == ConsoleKey.Enter)
                 {
+                    SoundControl.PlaySoundEffect(selectOption);
+
                     switch (menuSelect)
                     {
                         case 4:
-                            Console.Clear();
                             isMenuOn = false;
                             AddFarmerMenu.AddFarmer();
                             break;
                         case 5:
-                            Console.Clear();
                             isMenuOn = false;
                             RemoveFarmer.RemoveFarmerMenu();
                             break;
                         case 6:
-                            Console.Clear();
                             isMenuOn = false;
                             DisplayList.DisplayListMenu();
                             break;
                         case 7:
-                            Console.Clear();
                             isMenuOn = false;
                             Tournament.TournamentMenu();
                             break;
-                        case 10:
-                            Console.Clear();
+                        case 11:
                             isMenuOn = false;
                             break;
                         default:
-                            Console.Clear();
                             break;
                     }
                 }
-                else 
+                else
                 {
+                    SoundControl.PlaySoundEffect(selectOption);
                     switch (keyPressed.Key)
                     {
                         case ConsoleKey.D1:
-                            Console.Clear();
                             isMenuOn = false;
                             AddFarmerMenu.AddFarmer();
                             break;
                         case ConsoleKey.D2:
-                            Console.Clear();
                             isMenuOn = false;
                             RemoveFarmer.RemoveFarmerMenu();
                             break;
                         case ConsoleKey.D3:
-                            Console.Clear();
                             isMenuOn = false;
                             DisplayList.DisplayListMenu();
                             break;
                         case ConsoleKey.D4:
-                            Console.Clear();
                             isMenuOn = false;
                             Tournament.TournamentMenu();
                             break;
                         case ConsoleKey.D0:
-                            Console.Clear();
                             isMenuOn = false;
                             break;
                         default:
-                            Console.Clear();
                             break;
                     }
-                } 
+                }
             }
         }
-
-        private static void PrintLinesInCenter(params string[] lines)
-        {
-            int verticalStart = (Console.WindowHeight - lines.Length) / 2;
-            int verticalPosition = verticalStart;
-
-            foreach (var line in lines)
-            {
-                int horizontalStart = (Console.WindowWidth - line.Length) / 2;
-
-                Console.SetCursorPosition(horizontalStart, verticalPosition);
-
-                Console.Write(line);
-
-                ++verticalPosition;
-            }
-        }
-
     }
 }
