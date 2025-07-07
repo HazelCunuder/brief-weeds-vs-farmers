@@ -54,12 +54,33 @@ namespace Farmer_vs_weeds
         }
 
         // -- Methods --
+        static void WriteCentered(string text, bool newline = true)
+        {
+            int leftPadding = (Console.WindowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            if (newline) Console.WriteLine(text);
+            else Console.Write(text);
+        }
 
         public void ShowInfos()
         {
             WriteCentered($"{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices.");
         }
+        public virtual int SpecialAttack()
+        {
+            Random dice = new Random();
+            int rollTotal = 0;
+            int attackDice = dice.Next(3, 9);
 
+            for (int i = 0; i < GetAttackDices(); i++)
+            {
+                rollTotal += attackDice;
+            }
+
+            WriteCentered($"\nSpecial Attack ! roll : {rollTotal}\n");
+            return rollTotal;
+        }
         public virtual int Attack()
         {
             Random dice = new Random();
