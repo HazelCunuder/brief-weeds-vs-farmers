@@ -61,7 +61,20 @@ namespace Farmer_vs_weeds
                 $"{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices."
             );
         }
+        public virtual int SpecialAttack()
+        {
+            Random dice = new Random();
+            int rollTotal = 0;
+            int attackDice = dice.Next(3, 9);
 
+            for (int i = 0; i < GetAttackDices(); i++)
+            {
+                rollTotal += attackDice;
+            }
+
+            Console.WriteLine($"Special Attack ! roll : {rollTotal}");
+            return rollTotal;
+        }
         public virtual int Attack()
         {
             Random dice = new Random();
