@@ -1,7 +1,6 @@
 ﻿using System.Net.Mail;
 using Farmer_vs_weeds.Menu;
 
-
 namespace Farmer_vs_weeds
 {
     public class Farmer

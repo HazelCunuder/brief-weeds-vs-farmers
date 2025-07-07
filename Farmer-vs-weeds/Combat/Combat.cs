@@ -4,56 +4,76 @@ namespace Farmer_vs_weeds.Combat
 {
     public static class Combat
     {
-        // --- Methods ---
         public static void Fight(List<Farmer> opponent)
         {
             bool isFightOngoing = true;
             int currentTurn = 1;
 
-            // Recover the player via the Tournament class
             Farmer player = Tournament.FarmerPlayer;
+
+            // Centered text helper
+            void WriteCentered(string text, bool newline = true)
+            {
+                int leftPadding = (Console.WindowWidth - text.Length) / 2;
+                if (leftPadding < 0) leftPadding = 0;
+                Console.SetCursorPosition(leftPadding, Console.CursorTop);
+                if (newline) Console.WriteLine(text);
+                else Console.Write(text);
+            }
 
             if (player == null)
             {
-                Console.WriteLine("No players selected.");
+                WriteCentered("No player selected.");
+                Console.ReadKey();
                 return;
             }
 
-            Farmer enemy = opponent[0]; // opponent[0] to take the 1st opponent in the list
+            Farmer enemy = opponent[0]; // First opponent
 
             while (isFightOngoing)
             {
-                Console.WriteLine($"\n--- Turn {currentTurn} ---\n");
-                Console.WriteLine($"Our Fighter: {player.GetUsername()}");
-                Console.WriteLine($"Current HP: {player.GetHPs()}");
+                Console.Clear();
+                WriteCentered($"--- Turn {currentTurn} ---");
+                WriteCentered("");
 
-                // Player attacks enemy
-                Console.WriteLine("\nPlayer Attack\n");
+                WriteCentered($"Your Farmer: {player.GetUsername()}");
+                WriteCentered($"Current HP: {player.GetHPs()}");
+                WriteCentered("");
+
+                // Player attacks
+                WriteCentered(">>> Player Attacks <<<");
                 enemy.TakeDamage(player.Attack());
+                WriteCentered("");
                 enemy.ShowInfos();
+                WriteCentered("");
 
                 if (enemy.GetHPs() <= 0)
                 {
-                    Console.WriteLine($"\n{player.GetUsername()} has won the fight!");
+                    WriteCentered($"{player.GetUsername()} has won the fight!");
                     isFightOngoing = false;
                     break;
                 }
 
-                // Enemy attacks player
-                Console.WriteLine("\nEnnemy Attack\n");
+                // Enemy attacks
+                WriteCentered(">>> Enemy Attacks <<<");
                 player.TakeDamage(enemy.Attack());
+                WriteCentered("");
                 player.ShowInfos();
+                WriteCentered("");
 
                 if (player.GetHPs() <= 0)
                 {
-                    Console.WriteLine($"\n{enemy.GetUsername()} has won the fight!");
+                    WriteCentered($"{enemy.GetUsername()} has won the fight!");
                     isFightOngoing = false;
                     break;
                 }
 
                 currentTurn++;
+                Console.ReadKey(); // Optional delay for readability
             }
 
+            WriteCentered("");
+            WriteCentered("Press any key to return to the menu...");
             Console.ReadKey();
             Menu.Menu.DisplayMenu();
         }

@@ -4,7 +4,7 @@
     {
         // -- Attributes --
 
-        private bool inTractor;
+        private readonly bool inTractor;
 
         // -- Constructor Statement --
 

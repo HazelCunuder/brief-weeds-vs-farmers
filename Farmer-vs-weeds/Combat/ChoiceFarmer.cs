@@ -43,7 +43,7 @@ namespace Farmer_vs_weeds.Combat
             // Player one choice
             while(player1Index < 0 || player1Index >= allFarmers.Count)
             {
-                Console.WriteLine("\nPlayer 1, choise your Farmer :");
+                Console.WriteLine("\nPlayer 1, choose your Farmer: ");
                     player1Index = Convert.ToInt32(Console.ReadLine());
                 if (player1Index < 1 || player1Index > allFarmers.Count)
                 {
@@ -59,11 +59,11 @@ namespace Farmer_vs_weeds.Combat
 
             while (player2Index < 0 || player2Index >= allFarmers.Count || player2Index == player1Index)
             {
-                Console.WriteLine("\nPlayer 2, choise your Farmer :");
+                Console.WriteLine("\nPlayer 2, choose your Farmer: ");
                 player2Index = Convert.ToInt32(Console.ReadLine());
                 if (player2Index < 1 || player2Index > allFarmers.Count || player2Index == player1Index)
                 {
-                    Console.WriteLine("Invalide choice.");
+                    Console.WriteLine("Invalid choice.");
                 }
                 else
                 {
