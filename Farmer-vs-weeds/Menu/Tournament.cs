@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using Farmer_vs_weeds.Farmers;
+using Farmer_vs_weeds.Combat;
 
 namespace Farmer_vs_weeds.Menu
 {
     public class Tournament
     {
+        public static Farmer FarmerPlayer { get; set; }
+
+        public Farmer GetPlayer()
+        {
+            return FarmerPlayer;
+        }
+
         public static void TournamentMenu()
         {
             int PlayerChoice;
@@ -60,7 +68,7 @@ namespace Farmer_vs_weeds.Menu
             while (ChoiceListInvalid)
             {
                 WriteCentered("");
-                WriteCentered("Choose your farmer by number:", false);
+                WriteCentered("Choose your farmer by number: ", false);
                 Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop);
                 if (
                     int.TryParse(Console.ReadLine(), out PlayerChoice)
@@ -69,6 +77,7 @@ namespace Farmer_vs_weeds.Menu
                 )
                 {
                     WriteCentered($"You selected: {Farmers[PlayerChoice - 1].GetUsername()}");
+                    FarmerPlayer = Farmers[PlayerChoice - 1];
                     ChoiceListInvalid = false;
                 }
                 else
@@ -81,7 +90,7 @@ namespace Farmer_vs_weeds.Menu
             while (ChoiceRandomInvalid)
             {
                 WriteCentered("");
-                WriteCentered("Enter total number of participants (2 to 12):", false);
+                WriteCentered("Enter total number of participants (2 to 12): ", false);
                 Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop);
                 if (
                     int.TryParse(Console.ReadLine(), out FarmerRandom)
@@ -122,6 +131,7 @@ namespace Farmer_vs_weeds.Menu
             WriteCentered(
                 $"Tournament begins with your farmer and {FarmerRandom} random opponents."
             );
+            Combat.Combat.Fight(opponent);
             WriteCentered("Press any key to continue...");
             Console.ReadKey();
         }
