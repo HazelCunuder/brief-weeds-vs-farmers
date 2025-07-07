@@ -19,22 +19,22 @@ namespace Farmer_vs_weeds.Farmers
             {
                 if (healthPoints < 0)
                 {
-                    Console.WriteLine("You cannot create a farmer with negative health\n");
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a farmer with negative health\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
                 else if (healthPoints < 40)
                 {
-                    Console.WriteLine("You cannot create a Chem Farmer with less than 40HP\n");
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a Chem Farmer with less than 40HP\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
                 else if (healthPoints > 90)
                 {
-                    Console.WriteLine("You cannot create a Chem Farmer with more than 90HP\n");
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a Chem Farmer with more than 90HP\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
@@ -47,6 +47,16 @@ namespace Farmer_vs_weeds.Farmers
         }
 
         // -- Methods --
+        // Centered text helper
+        static void WriteCentered(string text, bool newline = true)
+        {
+            int leftPadding = (Console.WindowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            if (newline) Console.WriteLine(text);
+            else Console.Write(text);
+        } 
+
         public override int SpecialAttack()
         {
             Random dice = new Random();
@@ -58,7 +68,7 @@ namespace Farmer_vs_weeds.Farmers
                 rollTotal += attackDice;
             }
 
-            Console.WriteLine($"Special Attack ! roll : {rollTotal}");
+            WriteCentered($"Special Attack ! roll : {rollTotal}");
             return rollTotal;
         }
         public override int Attack()

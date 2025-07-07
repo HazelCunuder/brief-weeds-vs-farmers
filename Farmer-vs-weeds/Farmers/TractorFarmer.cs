@@ -25,26 +25,22 @@
             {
                 if (healthPoints < 0)
                 {
-                    Console.WriteLine(
-                        "You cannot create a Automatic farmer with negative health\n"
-                    );
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a Automatic farmer with negative health\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
                 else if (healthPoints < 100)
                 {
-                    Console.WriteLine("You cannot create a Automic Farmer with less than 100HP\n");
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a Automic Farmer with less than 100HP\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
                 else if (healthPoints > 150)
                 {
-                    Console.WriteLine(
-                        "You cannot create a Automatic Farmer with more than 150HP\n"
-                    );
-                    Console.Write("Please write a correct HP value: ");
+                    WriteCentered("You cannot create a Automatic Farmer with more than 150HP\n");
+                    WriteCentered("Please write a correct HP value: ");
                     healthPoints = Convert.ToInt32(Console.ReadLine());
                     continue;
                 }
@@ -57,14 +53,20 @@
         }
 
         // -- Methods --
+        static void WriteCentered(string text, bool newline = true)
+        {
+            int leftPadding = (Console.WindowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            if (newline) Console.WriteLine(text);
+            else Console.Write(text);
+        }
 
         public override void TakeDamage(int damage)
         {
             if (inTractor == true)
             {
-                Console.WriteLine(
-                    $"{GetUsername()} is in the tractor, they will now take half damage"
-                );
+                WriteCentered($"{GetUsername()} is in the tractor, they will now take half damage");
 
                 int currentHP = GetHPs();
                 SetHealthPoints(currentHP - damage / 2);
@@ -81,7 +83,7 @@
                 rollTotal += attackDice;
             }
 
-            Console.WriteLine($"Special Attack ! roll : {rollTotal}");
+            WriteCentered($"Special Attack ! roll : {rollTotal}");
             return rollTotal;
         }
 
@@ -95,7 +97,7 @@
             {
                 rollTotal += attackDice;
             }
-
+            WriteCentered($"Attack ! roll : {rollTotal}");
             return rollTotal;
         }
     }
