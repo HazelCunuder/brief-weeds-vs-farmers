@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Farmer_vs_weeds.Farmers;
 
 namespace Farmer_vs_weeds.Menu
@@ -14,52 +10,84 @@ namespace Farmer_vs_weeds.Menu
             string username;
             int hp = 0;
             int attackDices = 0;
-            string types = "";
+            string types = "Chem Farmer";
 
             bool validHp = false;
             bool validAttackDices = false;
 
-            types = "Chem Farmer";
             Console.Clear();
-            Console.Write("\nName: ");
+
+            // -- Helper for centering text --
+            void WriteCentered(string text, bool newline = true)
+            {
+                int leftPadding = (Console.WindowWidth - text.Length) / 2;
+                if (leftPadding < 0)
+                    leftPadding = 0;
+                Console.SetCursorPosition(leftPadding, Console.CursorTop);
+                if (newline)
+                    Console.WriteLine(text);
+                else
+                    Console.Write(text);
+            }
+
+            // -- Name Input --
+            WriteCentered(" ");
+            WriteCentered("=== Create Chem Farmer ===");
+            WriteCentered(" ");
+            WriteCentered("Name: ", false);
             username = Console.ReadLine();
 
+            // -- HP Input --
             while (!validHp)
             {
-                Console.WriteLine("\nChoose between 40 and 90 life points ");
-                int inputUser = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+                WriteCentered($"Hello {username}, let's set up your stats.");
+                WriteCentered(" ");
+                WriteCentered("Choose HP between 40 and 90:");
+                string input = Console.ReadLine();
 
-                if (inputUser < 40 || inputUser > 90)
-                {
-                    Console.WriteLine("Error,follow the instructions ");
-                }
-                else
+                if (int.TryParse(input, out int inputUser) && inputUser >= 40 && inputUser <= 90)
                 {
                     hp = inputUser;
-                    break;
-                }
-            }
-            while (!validAttackDices)
-            {
-                Console.WriteLine("\nChoose the number of attack dice between 6-9 d6");
-                int inputUser = Convert.ToInt32(Console.ReadLine());
-
-                if (inputUser < 6 || inputUser > 9)
-                {
-                    Console.WriteLine("Error,follow the instructions ");
+                    validHp = true;
                 }
                 else
                 {
-                    attackDices = inputUser;
-                    break;
+                    WriteCentered("Error: Follow the instructions.");
+                    Thread.Sleep(1000);
                 }
             }
 
+            // -- Attack Dice Input --
+            while (!validAttackDices)
+            {
+                Console.Clear();
+                WriteCentered("Choose number of attack dice (6 to 9 d6):");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out int inputUser) && inputUser >= 6 && inputUser <= 9)
+                {
+                    attackDices = inputUser;
+                    validAttackDices = true;
+                }
+                else
+                {
+                    WriteCentered("Error: Follow the instructions.");
+                    Thread.Sleep(1000);
+                }
+            }
+
+            // -- Add to List --
             Menu.FarmersList().Add(new ChemFarmer(username, hp, attackDices, types));
+
+            // -- Final Display --
             Console.Clear();
-            Console.WriteLine(
-                $"\n{types} {username} create with {hp} HP and {attackDices} attack\n"
-            );
+            WriteCentered(" ");
+            WriteCentered($"{types} \"{username}\" created!");
+            WriteCentered($"HP: {hp} | Dice: {attackDices}d6");
+            WriteCentered(" ");
+            WriteCentered("Press any key to go back...");
+            Console.ReadKey();
         }
     }
 }
