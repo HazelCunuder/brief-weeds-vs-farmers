@@ -70,6 +70,20 @@
                 SetHealthPoints(currentHP - damage / 2);
             }
         }
+        public override int SpecialAttack()
+        {
+            Random dice = new Random();
+            int rollTotal = 0;
+            int attackDice = dice.Next(3, 9);
+
+            for (int i = 0; i < GetAttackDices(); i++)
+            {
+                rollTotal += attackDice;
+            }
+
+            Console.WriteLine($"Special Attack ! roll : {rollTotal}");
+            return rollTotal;
+        }
 
         public override int Attack()
         {
