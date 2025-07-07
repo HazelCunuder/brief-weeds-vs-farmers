@@ -1,32 +1,18 @@
-﻿using System;
+﻿using Farmer_vs_weeds.Audio;
+using Farmer_vs_weeds.Combat;
+using Farmer_vs_weeds.Guide;
+using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Farmer_vs_weeds.Farmers;
-using Farmer_vs_weeds.Combat;
-﻿using Farmer_vs_weeds.Audio;
-using NAudio.Wave;
 
 namespace Farmer_vs_weeds.Menu
 {
-    internal class Menu
+    internal class GuideMenu
     {
-        // -- Properties --
-        private static List<Farmer> Farmers = new List<Farmer>();
-        private static IWavePlayer? outputDevice;
-        private static AudioFileReader? audioFile;
-        private static bool isMusicStarted = false;
-
-        // -- Methods --
-        public static List<Farmer> FarmersList()
-        {
-            return Farmers;
-        }
-
-        public static void DisplayMenu()
+        public static void Guide()
         {
             string bgm = Path.Combine("Audio", "main-menu-bgm.wav");
             string scrollOptions = Path.Combine("Audio", "scroll-menu.wav");
@@ -41,31 +27,19 @@ namespace Farmer_vs_weeds.Menu
             string[] menuContent = new string[]
             {
                 "╔═══════════════════════════════╗",
-                "║        Brawling Farmers       ║",
+                "║           User Guide          ║",
                 "║═══════════════════════════════║",
                 "║                               ║",
-                "║ 1 - Add Farmer                ║",
-                "║ 2 - Remove Farmer             ║",
-                "║ 3 - Show Farmer's List        ║",
-                "║ 4 - Start a tournament        ║",
-                "║ 5 - Start Singles Fight       ║",
-                "║ 6 - Show previous Winners     ║",
-                "║ 7 - User's Guide              ║",
+                "║ 1 - Menu Guide                ║",
+                "║ 2 - Classes Guide             ║",
+                "║ 3 - Input Guide               ║",
+                "║ 4 - Functionnalities          ║",
                 "║                               ║",
                 "║ 0 - Quit                      ║",
                 "╚═══════════════════════════════╝",
             };
 
             Console.CursorVisible = false;
-
-            if (!isMusicStarted)
-            {
-                audioFile = new AudioFileReader(bgm);
-                outputDevice = new WaveOutEvent();
-                outputDevice.Init(audioFile);
-                outputDevice.Play();
-                isMusicStarted = true;
-            }
 
             while (isMenuOn)
             {
@@ -110,7 +84,7 @@ namespace Farmer_vs_weeds.Menu
             {
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
 
-                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect < 11)
+                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect < 9)
                 {
                     menuSelect++;
                     SoundControl.PlaySoundEffect(scrollOptions);
@@ -128,26 +102,23 @@ namespace Farmer_vs_weeds.Menu
                     {
                         case 4:
                             isMenuOn = false;
-                            AddFarmerMenu.AddFarmer();
+                            MenuGuide.GuideMenu();
                             break;
                         case 5:
                             isMenuOn = false;
-                            RemoveFarmer.RemoveFarmerMenu();
+                            ClassGuide.ClassGuideDisplay();
                             break;
                         case 6:
                             isMenuOn = false;
-                            DisplayList.DisplayListMenu();
-                            break;
+                            InputGuide.InputGuideDisplay();
+                                                        break;
                         case 7:
                             isMenuOn = false;
                             Tournament.TournamentMenu();
                             break;
-                        case 8:
+                        case 9:
                             isMenuOn = false;
-                            GuideMenu.Guide();
-                            break;
-                        case 12:
-                            isMenuOn = false;
+                            Menu.DisplayMenu();
                             break;
                         default:
                             break;
@@ -160,34 +131,23 @@ namespace Farmer_vs_weeds.Menu
                     {
                         case ConsoleKey.D1:
                             isMenuOn = false;
-                            AddFarmerMenu.AddFarmer();
+                            MenuGuide.GuideMenu();
                             break;
                         case ConsoleKey.D2:
                             isMenuOn = false;
-                            RemoveFarmer.RemoveFarmerMenu();
+                            ClassGuide.ClassGuideDisplay();
                             break;
                         case ConsoleKey.D3:
                             isMenuOn = false;
-                            DisplayList.DisplayListMenu();
+                            InputGuide.InputGuideDisplay();
                             break;
                         case ConsoleKey.D4:
                             isMenuOn = false;
                             Tournament.TournamentMenu();
                             break;
-                        case ConsoleKey.D5:
-                            isMenuOn = false;
-                            ChoiceFarmer.SelectFarmer();
-                            break;
-                        case ConsoleKey.D6:
-                            isMenuOn = false;
-                            ChoiceFarmer.SelectFarmer();
-                            break;
-                        case ConsoleKey.D7:
-                            isMenuOn = false;
-                            GuideMenu.Guide();
-                            break;
                         case ConsoleKey.D0:
                             isMenuOn = false;
+                            Menu.DisplayMenu();
                             break;
                         default:
                             break;
