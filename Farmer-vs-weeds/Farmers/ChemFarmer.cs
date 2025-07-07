@@ -84,5 +84,13 @@ namespace Farmer_vs_weeds.Farmers
 
             return rollTotal;
         }
+        public static void WriteCentered(string text, bool newline = true)
+        {
+            int leftPadding = (Console.WindowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            if (newline) Console.WriteLine(text);
+            else Console.Write(text);
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace Farmer_vs_weeds
             AttackDices = attackDices;
             if (healthpoints < 0)
             {
-                WriteCentered("\nYou cannot create a farmer with negative health\n");
+                WriteCentered("You cannot create a farmer with negative health");
             }
             else
             {
@@ -65,7 +65,7 @@ namespace Farmer_vs_weeds
 
         public void ShowInfos()
         {
-            WriteCentered($"\n{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices.\n");
+            WriteCentered($"{Username}, {Types} has {HealthPoints}hp left and {AttackDices} dices.");
         }
         public virtual int SpecialAttack()
         {
@@ -98,6 +98,14 @@ namespace Farmer_vs_weeds
         public virtual void TakeDamage(int damage)
         {
             HealthPoints -= damage;
+        }
+        public static void WriteCentered(string text, bool newline = true)
+        {
+            int leftPadding = (Console.WindowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            if (newline) Console.WriteLine(text);
+            else Console.Write(text);
         }
     }
 }
