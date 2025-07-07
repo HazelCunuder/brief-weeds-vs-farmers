@@ -13,7 +13,7 @@
         public static void DisplayMenu()
         {
             bool isMenuOn = true;
-            int menuSelect = 0;
+            int menuSelect = 4;
             string[] menuContent = new string[] {
                 "╔═══════════════════════════════╗",
                 "║        Brawling Farmers       ║",
@@ -76,12 +76,12 @@
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
                 
 
-                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect != menuContent.Length - 1)
+                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect < 11)
                 {
                     menuSelect++;
                     Console.Clear();
                 }
-                else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect >= 1)
+                else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect > 4)
                 {
                     menuSelect--;
                     Console.Clear();
@@ -110,7 +110,7 @@
                             isMenuOn = false;
                             Tournament.TournamentMenu();
                             break;
-                        case 10:
+                        case 11:
                             Console.Clear();
                             isMenuOn = false;
                             break;
@@ -154,23 +154,5 @@
                 } 
             }
         }
-
-        private static void PrintLinesInCenter(params string[] lines)
-        {
-            int verticalStart = (Console.WindowHeight - lines.Length) / 2;
-            int verticalPosition = verticalStart;
-
-            foreach (var line in lines)
-            {
-                int horizontalStart = (Console.WindowWidth - line.Length) / 2;
-
-                Console.SetCursorPosition(horizontalStart, verticalPosition);
-
-                Console.Write(line);
-
-                ++verticalPosition;
-            }
-        }
-
     }
 }
