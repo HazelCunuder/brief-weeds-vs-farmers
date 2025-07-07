@@ -11,38 +11,62 @@ namespace Farmer_vs_weeds.Menu
         public static void DisplayListMenu()
         {
             bool displayListMenuOn = true;
-            int placeInList = 1;
+
+            List<string> listContent = new List<string> {
+                "╔════════════════════════════════╗",
+                "║          Farmer's List         ║",
+                "╚════════════════════════════════╝",
+                "                                  ",
+            };
+
+            for (int i = 0; i < Menu.FarmersList().Count; i++)
+            {
+                string farmerLine = $"{i + 1} - {Menu.FarmersList()[i].GetUsername()}, HP: {Menu.FarmersList()[i].GetHPs()}, Attack Dices {Menu.FarmersList()[i].GetAttackDices()}";
+                listContent.Add(farmerLine);
+            }
+
+            listContent.Add("\n");
+            listContent.Add("0 - Go Back");
 
             while (displayListMenuOn)
             {
-                Console.WriteLine("╔═════════════════════════════=══╗");
-                Console.WriteLine("║          Farmer's List         ║");
-                Console.WriteLine("║════════════════════════════════║");
-                Console.WriteLine("║                                ║");
-                foreach (Farmer f in Menu.FarmersList())
-                {
-                    Console.WriteLine($"║ {placeInList} - {f.GetUsername()} ║");
-                    placeInList++;
-                }
-                Console.WriteLine("║                               ║");
-                Console.WriteLine("║ 0 - Go Back                   ║");
-                Console.WriteLine("╚═══════════════════════════════╝");
+                Console.CursorVisible = false;
 
+                int consoleWidth = Console.WindowWidth;
+                int consoleHeight = Console.WindowHeight;
+
+                int menuHeight = listContent.Count;
+                int verticalPadding = (consoleHeight - menuHeight) / 2;
+
+                // -- Add blank lines for vertical centering --
+                for (int i = 0; i < verticalPadding; i++)
+                {
+                    Console.WriteLine();
+                }
+
+                for (int i = 0; i < listContent.Count; i++)
+                {
+                    int leftPadding = (consoleWidth - listContent[i].Length) / 2;
+
+                    Console.SetCursorPosition(leftPadding < 0 ? 0 : leftPadding, Console.CursorTop);
+
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(listContent[i]);
+                    Console.ResetColor();
+
+                }
                 ControlMenu();
             }
 
             void ControlMenu()
             {
-                char input;
+                ConsoleKeyInfo keyPressed = Console.ReadKey();
 
-                input = Console.ReadKey().KeyChar;
-
-                switch (input)
+                switch (keyPressed.Key)
                 {
-                    case '0':
-                    case 'à':
-                        displayListMenuOn = false;
+                    case ConsoleKey.D0:
                         Console.Clear();
+                        displayListMenuOn = false;
                         Menu.DisplayMenu();
                         break;
                     default:
