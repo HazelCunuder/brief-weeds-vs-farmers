@@ -12,4 +12,8 @@
     <Compile Remove="Menu\FarmerMenu.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Combat\" />
+  </ItemGroup>
+
 </Project>
