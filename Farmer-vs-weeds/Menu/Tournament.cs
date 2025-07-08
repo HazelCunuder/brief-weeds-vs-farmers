@@ -131,9 +131,9 @@ namespace Farmer_vs_weeds.Menu
             WriteCentered(
                 $"Tournament begins with your farmer and {FarmerRandom} random opponents."
             );
-            Combat.Combat.Fight(opponent);
             WriteCentered("Press any key to continue...");
             Console.ReadKey();
+            Combat.Combat.Fight(opponent);
         }
     }
 }

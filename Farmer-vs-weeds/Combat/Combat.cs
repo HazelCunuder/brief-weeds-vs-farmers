@@ -32,6 +32,8 @@ namespace Farmer_vs_weeds.Combat
             // -- Take the first opponent in the list and set it as our current enemy --
             Farmer enemy = opponent[0];
 
+            int defaultHP = player.GetHPs();
+
             while (isFightOngoing)
             {
                 Console.Clear();
@@ -54,8 +56,25 @@ namespace Farmer_vs_weeds.Combat
                 {
                     WriteCentered($"{player.GetUsername()} has won the fight!");
                     Console.ReadKey();
-                    isFightOngoing = false;
-                    break;
+                    player.SetHealthPoints(defaultHP);
+                    opponent.RemoveAt(0);
+
+                    if (opponent.Count > 0)
+                    {
+                        enemy = opponent[0];
+                        WriteCentered("");
+                        WriteCentered("Press any key to continue the tournament...");
+                        Console.ReadKey();
+                        continue;
+                    }
+                    else
+                    {
+                        WriteCentered("");
+                        WriteCentered("Congratulations " + player.GetUsername() + "! You just won the tournament!");
+                        Console.ReadKey();
+                        break;
+                    }
+                    
                 }
 
                 // -- Enemy attacks --
@@ -69,6 +88,7 @@ namespace Farmer_vs_weeds.Combat
                 if (player.GetHPs() <= 0)
                 {
                     WriteCentered($"{enemy.GetUsername()} has won the fight!");
+                    WriteCentered("Game Over");
                     Console.ReadKey();
                     isFightOngoing = false;
                     break;
