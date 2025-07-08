@@ -151,6 +151,10 @@ namespace Farmer_vs_weeds.Menu
                             break;
                         case 8:
                             isMenuOn = false;
+                            ChoiceFarmer.SelectFarmer();
+                            break;
+                        case 10:
+                            isMenuOn = false;
                             GuideMenu.Guide();
                             break;
                         case 12:
