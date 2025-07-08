@@ -17,7 +17,7 @@ namespace Farmer_vs_weeds.Menu
 
             Console.Clear();
 
-            // -- Helper for centering text --
+            // -- Centers Text in Console --
             void WriteCentered(string text, bool newline = true)
             {
                 int leftPadding = (Console.WindowWidth - text.Length) / 2;

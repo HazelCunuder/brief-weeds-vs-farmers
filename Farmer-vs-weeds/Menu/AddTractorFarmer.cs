@@ -16,7 +16,7 @@ internal class AddTractorFarmer
 
         Console.Clear();
 
-        // -- Helper for centered text --
+        // -- Centers Text in Console --
         void WriteCentered(string text, bool newline = true)
         {
             int leftPadding = (Console.WindowWidth - text.Length) / 2;

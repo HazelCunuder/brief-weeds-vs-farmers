@@ -20,6 +20,7 @@ namespace Farmer_vs_weeds.Menu
                 "                                  ",
             };
 
+            // -- Add every farmer in the Farmer List to the List to display --
             for (int i = 0; i < Menu.FarmersList().Count; i++)
             {
                 string farmerLine =
@@ -35,6 +36,7 @@ namespace Farmer_vs_weeds.Menu
                 Console.Clear();
                 Console.CursorVisible = false;
 
+                // -- Centers Text in Console (Old way) --
                 int consoleWidth = Console.WindowWidth;
                 int consoleHeight = Console.WindowHeight;
 
@@ -60,6 +62,7 @@ namespace Farmer_vs_weeds.Menu
                 ControlMenu();
             }
 
+            // -- Return to Main Men,u if '0' is pressed --
             void ControlMenu()
             {
                 ConsoleKeyInfo keyPressed = Console.ReadKey();

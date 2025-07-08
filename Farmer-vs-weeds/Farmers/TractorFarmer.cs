@@ -23,6 +23,7 @@
 
             while (!correctTractorFarmerHP)
             {
+                // -- Validates that HP is within allowed range (100–150) --
                 if (healthPoints < 0)
                 {
                     WriteCentered("You cannot create a Automatic farmer with negative health\n");
@@ -53,6 +54,8 @@
         }
 
         // -- Methods --
+
+        // -- Centers Text in console --
         static void WriteCentered(string text, bool newline = true)
         {
             int leftPadding = (Console.WindowWidth - text.Length) / 2;
@@ -62,6 +65,7 @@
             else Console.Write(text);
         }
 
+        // -- Validates that HP is within allowed range (100–150) --
         public override void TakeDamage(int damage)
         {
             if (inTractor == true)
@@ -71,6 +75,9 @@
                 SetHealthPoints(currentHP - damage / 2);
             }
         }
+
+        // -- Override: special attack uses higher dice roll range (3–8) --
+
         public override int SpecialAttack()
         {
             Random dice = new Random();
@@ -86,6 +93,7 @@
             return rollTotal;
         }
 
+        // -- Override: standard attack with dice roll (1–5) --
         public override int Attack()
         {
             Random dice = new Random();

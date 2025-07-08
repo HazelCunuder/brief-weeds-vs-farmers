@@ -29,6 +29,7 @@ namespace Farmer_vs_weeds.Menu
 
         public static void DisplayMenu()
         {
+            // -- Fetch SFX --
             string bgm = Path.Combine("Audio", "main-menu-bgm.wav");
             string scrollOptions = Path.Combine("Audio", "scroll-menu.wav");
             string selectOption = Path.Combine("Audio", "select-option.wav");
@@ -39,6 +40,8 @@ namespace Farmer_vs_weeds.Menu
 
             bool isMenuOn = true;
             int menuSelect = 4;
+
+            // -- Store the strings to display in the menu --
             string[] menuContent = new string[]
             {
                 "╔═══════════════════════════════╗",
@@ -73,6 +76,7 @@ namespace Farmer_vs_weeds.Menu
             {
                 Console.Clear();
 
+                // -- Center Text in Console (old way) --
                 int consoleWidth = Console.WindowWidth;
                 int consoleHeight = Console.WindowHeight;
 
@@ -90,7 +94,7 @@ namespace Farmer_vs_weeds.Menu
                     int leftPadding = (consoleWidth - menuContent[i].Length) / 2;
 
                     Console.SetCursorPosition(leftPadding < 0 ? 0 : leftPadding, Console.CursorTop);
-
+                    // -- Change line color depending on the selected one --
                     if (i == menuSelect)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -108,6 +112,7 @@ namespace Farmer_vs_weeds.Menu
                 MenuControls();
             }
 
+            // -- Control the menu --
             void MenuControls()
             {
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
@@ -145,6 +150,10 @@ namespace Farmer_vs_weeds.Menu
                             Tournament.TournamentMenu();
                             break;
                         case 8:
+                            isMenuOn = false;
+                            ChoiceFarmer.SelectFarmer();
+                            break;
+                        case 10:
                             isMenuOn = false;
                             GuideMenu.Guide();
                             break;

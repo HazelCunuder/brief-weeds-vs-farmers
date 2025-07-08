@@ -8,6 +8,7 @@ namespace Farmer_vs_weeds.Menu
         // -- Methods --
         public static void AddFarmer()
         {
+            // -- Add SFX --
             string bgm = Path.Combine("Audio", "main-menu-bgm.wav");
             string scrollOptions = Path.Combine("Audio", "scroll-menu.wav");
             string selectOption = Path.Combine("Audio", "select-option.wav");
@@ -20,6 +21,7 @@ namespace Farmer_vs_weeds.Menu
 
             bool addFarmer = true;
 
+            // -- Store the lines we'll need to display --
             string[] display = new string[]
             {
                 "--- Add a Farmer ---",
@@ -41,6 +43,7 @@ namespace Farmer_vs_weeds.Menu
                 MenuControls();
             }
 
+            // -- Control the menu --
             void MenuControls()
             {
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
@@ -107,13 +110,13 @@ namespace Farmer_vs_weeds.Menu
 
             void DisplayFarmer()
             {
+                // -- Centers Text in Console (Old version) --
                 int consoleWidth = Console.WindowWidth;
                 int consoleHeight = Console.WindowHeight;
 
                 int menuHeight = display.Length;
                 int verticalPadding = (consoleHeight - menuHeight) / 2;
 
-                // -- Add blank lines for vertical centering --
                 for (int i = 0; i < verticalPadding; i++)
                 {
                     Console.WriteLine();
@@ -124,6 +127,7 @@ namespace Farmer_vs_weeds.Menu
 
                     Console.SetCursorPosition(leftPadding < 0 ? 0 : leftPadding, Console.CursorTop);
 
+                    // -- Change line color depending on the selected one --
                     if (i == menuSelect)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;

@@ -11,7 +11,7 @@ namespace Farmer_vs_weeds.Combat
 
             Farmer player = Tournament.FarmerPlayer;
 
-            // Centered text helper
+            // -- Internal Function to center the text in Console --
             void WriteCentered(string text, bool newline = true)
             {
                 int leftPadding = (Console.WindowWidth - text.Length) / 2;
@@ -21,6 +21,7 @@ namespace Farmer_vs_weeds.Combat
                 else Console.Write(text);
             }
 
+            // -- Check if player has been selected --
             if (player == null)
             {
                 WriteCentered("No player selected.");
@@ -28,7 +29,8 @@ namespace Farmer_vs_weeds.Combat
                 return;
             }
 
-            Farmer enemy = opponent[0]; // First opponent
+            // -- Take the first opponent in the list and set it as our current enemy --
+            Farmer enemy = opponent[0];
 
             while (isFightOngoing)
             {
@@ -40,13 +42,14 @@ namespace Farmer_vs_weeds.Combat
                 WriteCentered($"Current HP: {player.GetHPs()}");
                 WriteCentered("");
 
-                // Player attacks
+                // -- Player Attacks --
                 WriteCentered(">>> Player Attacks <<<");
                 enemy.TakeDamage(player.Attack());
                 WriteCentered("");
                 enemy.ShowInfos();
                 WriteCentered("");
 
+                // -- If enemy's health is under or equal to 0, display the winning message --
                 if (enemy.GetHPs() <= 0)
                 {
                     WriteCentered($"{player.GetUsername()} has won the fight!");
@@ -55,13 +58,14 @@ namespace Farmer_vs_weeds.Combat
                     break;
                 }
 
-                // Enemy attacks
+                // -- Enemy attacks --
                 WriteCentered(">>> Enemy Attacks <<<");
                 player.TakeDamage(enemy.Attack());
                 WriteCentered("");
                 player.ShowInfos();
                 WriteCentered("");
 
+                // -- If our health is under or equal to 0, display the losing message --
                 if (player.GetHPs() <= 0)
                 {
                     WriteCentered($"{enemy.GetUsername()} has won the fight!");
@@ -71,7 +75,7 @@ namespace Farmer_vs_weeds.Combat
                 }
 
                 currentTurn++;
-                Console.ReadKey(); // Optional delay for readability
+                Console.ReadKey(); 
             }
 
             WriteCentered("");

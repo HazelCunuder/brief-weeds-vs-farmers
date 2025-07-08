@@ -12,6 +12,7 @@ namespace Farmer_vs_weeds.Guide
         {
             bool inGuide = true;
 
+            // -- Centers Text in Console --
             void WriteCentered(string text, bool newline = true)
             {
                 int leftPadding = (Console.WindowWidth - text.Length) / 2;
@@ -24,6 +25,7 @@ namespace Farmer_vs_weeds.Guide
                     Console.Write(text);
             }
 
+            // -- Controls loop to keep user in the guide until they exit --
             while (inGuide)
             {
                 Console.Clear();
@@ -56,6 +58,7 @@ namespace Farmer_vs_weeds.Guide
                 WriteCentered("");
                 WriteCentered("0 - Go Back");
 
+                // -- If user presses '0' -> return to guide menu --
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
 
                 if (keyPressed.Key == ConsoleKey.D0)
